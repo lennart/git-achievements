@@ -175,11 +175,11 @@ function check_for_achivements
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "$count additions to the staging area."
+                unlock_achievement "Stone Mason (Level $power)" "Use git add to add to the staging area."
             fi
             case $2 in
                 *.gitignore )
-                unlock_achievement "Caretaker" "Kept your repository clean by adding a .gitignore file"
+                unlock_achievement "Caretaker" "Added a .gitignore file to a repository."
                 ;;
                 -p )
                 count_command "add -p"
@@ -198,19 +198,19 @@ function check_for_achivements
         bisect )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Hunter (Level $power)" "Used git bisect $count times"
+                unlock_achievement "Hunter (Level $power)" "Used git bisect $count times to perform a binary search to find which change introduced a bug."
             fi
             ;;
         blame )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Investigator (Level $power)" "$count hunts for the owner of changes using blame."
+                unlock_achievement "Investigator (Level $power)" "Used git blame to annotates each line in a file with information about the revision which last modified the line."
             fi
             ;;
         cherry-pick )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Cherry Picker (Level $power)" "$count cherry-picks"
+                unlock_achievement "Cherry Picker (Level $power)" "Used git cherry-pick to add a sha from another branch into the current branch."
             fi
             ;;
         checkout )
@@ -218,7 +218,7 @@ function check_for_achivements
                 -b )
                 count_command "checkout -b"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Blacksmith (Level $power)" "$count new branches."
+                    unlock_achievement "Blacksmith (Level $power)" "Created a branch using checkout -b."
                 fi
                 ;;
             esac
@@ -226,29 +226,29 @@ function check_for_achivements
         commit )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Wisdom (Level $power)" "$count commits"
+                unlock_achievement "Wisdom (Level $power)" "Made $count commits using git commit."
             fi
             case $2 in
                 --amend )
                 count_command "commit --amend"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Seamstress (Level $power)" "$count amended commits."
+                    unlock_achievement "Seamstress (Level $power)" "$count amended commits with git commit --amend."
                 fi
                 ;;
                 -s )
                 count_command "commit -s"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Locksmith (Level $power)" "$count signed commits."
+                    unlock_achievement "Locksmith (Level $power)" "Add Signed-off-by line by the committer at the end of the commit log message using git commit -s."
                 fi
                 ;;
             esac
             ;;
         config )
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.name" ]] ; then
-                unlock_achievement "Homeowner" "Set global user name."
+                unlock_achievement "Homeowner (name)" "Set global user name using git config."
             fi
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.email" ]] ; then
-                unlock_achievement "Homeowner (Level 2)" "Set global email address."
+                unlock_achievement "Homeowner (address)" "Set global email address using git config."
             fi
             ;;
         diff )
@@ -256,7 +256,7 @@ function check_for_achivements
                 --cached )
                 count_command "diff --cached"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Goldsmith (Level $power)" "$count reviewed patches before committing."
+                    unlock_achievement "Goldsmith (Level $power)" "Reviewed patches before committing with git diff --cached."
                 fi
                 ;;
             esac
@@ -265,33 +265,33 @@ function check_for_achivements
         gc )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Chimney Sweeper" "$count garbage collections"
+                unlock_achievement "Chimney Sweeper" "Used git gc to run a number of housekeeping tasks on the current repository."
             fi
             ;;
         init )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Architect (Level $power)" "$count new Git repositories"
+                unlock_achievement "Architect (Level $power)" "Created a new repository with git init."
             fi
             ;;
         log )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Historian (Level $power)" "Investigate the log $count times"
+                unlock_achievement "Historian (Level $power)" "Investigate the log $count times using git log."
             fi
             case $2 in
                 -p* )
-                unlock_achievement "Dentist" "Extract patches with git log."
+                unlock_achievement "Dentist" "Extracted patches using git log -p."
                 ;;
                 -S* )
-                unlock_achievement "Librarian" "Searched for a specific string with git log."
+                unlock_achievement "Librarian" "Looked for differences that introduce or remove an instance of a string with git log -S"
                 ;;
             esac
             ;;
         push )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository"
+                unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository using git push"
             fi
             ;;
         rebase )
@@ -299,20 +299,20 @@ function check_for_achivements
                 -i )
                 count_command "rebase -i"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Butcher (Level $power)" "$count interactive rebases."
+                    unlock_achievement "Butcher (Level $power)" "Performed an interactive rebase using git rebase -i."
                 fi
                 ;;
             esac
             ;;
         reflog )
-            unlock_achievement "Weaver" "Investigate old branches"
+            unlock_achievement "Weaver" "Investigate old branches by using git reflog"
             ;;
         remote )
             case $2 in
                 add )
                 count_command "remote add"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Merchant (Level $power)" "Added $count external repositories."
+                    unlock_achievement "Merchant (Level $power)" "Added an external repository with git remote add."
                 fi
                 ;;
             esac
@@ -320,20 +320,20 @@ function check_for_achivements
         svn|p4 )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Traveler (Level $power)" "$count dealings with another rcs."
+                unlock_achievement "Traveler (Level $power)" "$count dealings with another rcs such as svn or p4."
             fi
             ;;
     esac
 
     case $2 in
         --help )
-            unlock_achievement "Student" "Accessed the documentation for a Git command"
+            unlock_achievement "Student" "Accessed the documentation for a Git command with git [command] --help"
             ;;
     esac
 
     hooks=`ls .git/hooks/ | grep -v sample | wc -l`
     if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks."
+        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks are present which help catch issues before they are shared."
     fi
 }
 
