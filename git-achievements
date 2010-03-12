@@ -22,6 +22,10 @@ $2
 
 function unlock_achievement
 {
+    grep "$1" ${ACHIEVEMENTSLOGFILE} > /dev/null
+    if [ $? -eq 0 ] ; then
+        return
+    fi
     output_achievement "$@"
     output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
 }
