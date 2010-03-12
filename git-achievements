@@ -82,6 +82,17 @@ function check_for_achivements
                 unlock_achievement "Wisdom (Level $power)" "$count commits"
             fi
             ;;
+        diff )
+            case $2 in
+                --cached )
+                count_command "diff --cached"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Goldsmith (Level $power)" "$count reviewed patches before commiting."
+                fi
+                ;;
+            esac
+
+            ;;
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
