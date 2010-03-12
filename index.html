@@ -25,13 +25,17 @@ ul {
     text-align: left;
     list-style-type:none;
 }
+#locked {
+    visibility: hidden;
+}
 </style>
 </head>
 <body>
 
 <h2>Benjamin C Meyer's Git Achievements</h2>
-<center>9 <a href="http://github.com/icefox/git-achievements">Git Achievements</a> unlocked</center><br>
+<center>10 <a href="http://github.com/icefox/git-achievements">Git Achievements</a> unlocked</center><br>
 <ul>
+<li>  <div class="title">Miller (Level 2)</div>  <div class="info">Add only part of a file to the stage 4 times.</div></li>
 <li>  <div class="title">Caretaker</div>  <div class="info">Added a .gitignore file to a repository.</div></li>
 <li>  <div class="title">Wisdom (Level 2)</div>  <div class="info">Made 4 commits using git commit.</div></li>
 <li>  <div class="title">Goldsmith (Level 1)</div>  <div class="info">Reviewed patches before committing with git diff --cached.</div></li>
@@ -42,4 +46,35 @@ ul {
 <li>  <div class="title">Stone Mason (Level 1)</div>  <div class="info">Use git add to add to the staging area.</div></li>
 <li>  <div class="title">Student</div>  <div class="info">Accessed the documentation for a Git command with git [command] --help</div></li>
 </ul>
+<script type="text/javascript">
+function showLocked() {
+    document.getElementById('locked').style.visibility = 'visible';
+    document.getElementById('showlocked').style.visibility = 'hidden';
+}
+</script>
+<a id="showlocked" href="javascript:showLocked()" >Show locked Achievements</a>
+<div id="locked">
+There are 21 Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
+<ul>
+<li><div class="title">Architect (Level X)</div><div class="info">Created a new repository with git init.</div></li>
+<li><div class="title">Blacksmith (Level X)</div><div class="info">Created a branch using checkout -b.</div></li>
+<li><div class="title">Butcher (Level X)</div><div class="info">Performed an interactive rebase using git rebase -i.</div></li>
+<li><div class="title">Caretaker</div><div class="info">Added a .gitignore file to a repository.</div></li>
+<li><div class="title">Dentist</div><div class="info">Extracted patches using git log -p.</div></li>
+<li><div class="title">Goldsmith (Level X)</div><div class="info">Reviewed patches before committing with git diff --cached.</div></li>
+<li><div class="title">Historian (Level X)</div><div class="info">Investigate the log X times using git log.</div></li>
+<li><div class="title">Homeowner (address)</div><div class="info">Set global email address using git config.</div></li>
+<li><div class="title">Librarian</div><div class="info">Looked for differences that introduce or remove an instance of a string with git log -S</div></li>
+<li><div class="title">Locksmith (Level X)</div><div class="info">Add Signed-off-by line by the committer at the end of the commit log message using git commit -s.</div></li>
+<li><div class="title">Master Carpenter (Level: $hooks)</div><div class="info">Custom installed hooks are present which help catch issues before they are shared.</div></li>
+<li><div class="title">Merchant (Level X)</div><div class="info">Added an external repository with git remote add.</div></li>
+<li><div class="title">Messenger (Level X)</div><div class="info">Apply a patch using am X times.</div></li>
+<li><div class="title">Miller (Level X)</div><div class="info">Add only part of a file to the stage X times.</div></li>
+<li><div class="title">Seamstress (Level X)</div><div class="info">X amended commits with git commit --amend.</div></li>
+<li><div class="title">Socialite (Level X)</div><div class="info">X pushes to a remote repository using git push</div></li>
+<li><div class="title">Stone Mason (Level X)</div><div class="info">Added files to the index area for inclusion in the next commit with git add.</div></li>
+<li><div class="title">Traveler (Level X)</div><div class="info">X dealings with another rcs such as svn or p4.</div></li>
+<li><div class="title">Weaver</div><div class="info">Investigate old branches by using git reflog</div></li>
+<li><div class="title">Wisdom (Level X)</div><div class="info">Made X commits using git commit.</div></li>
+</ul></div>
 </body></html>
