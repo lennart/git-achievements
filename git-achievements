@@ -70,6 +70,12 @@ function check_for_achivements
             execute_achivements_command "$@"
             exit $?
             ;;
+        gc )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Chimney Sweeper" "$count garbage collections"
+            fi
+            ;;
         commit )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
