@@ -88,6 +88,12 @@ function check_for_achivements
                 ;;
             esac
             ;;
+        bisect )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Hunter (Level $power)" "Used git bisect $count times"
+            fi
+            ;;
         cherry-pick )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
