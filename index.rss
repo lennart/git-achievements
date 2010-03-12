@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
-<item><title>Historian (Level 5)</title><description>Investigate the log 32 times</description></item>
-<item><title>Socialite (Level 2)</title><description>4 pushes to a remote repository</description></item>
-<item><title>Miller (Level 5)</title><description>Add only part of a file to the stage 32 times.</description></item>
-<item><title>Butcher (Level 2)</title><description>4 interactive rebases.</description></item>
-<item><title>Butcher (Level 1)</title><description>2 interactive rebases.</description></item>
-<item><title>Seamstress (Level 2)</title><description>4 amended commits.</description></item>
-<item><title>Historian (Level 4)</title><description>Investigate the log 16 times</description></item>
-<item><title>Seamstress (Level 1)</title><description>2 amended commits.</description></item>
-<item><title>Wisdom (Level 5)</title><description>32 commits</description></item>
-<item><title>Stone Mason (Level 6)</title><description>64 additions to the staging area.</description></item>
-<item><title>Socialite (Level 1)</title><description>2 pushes to a remote repository</description></item>
-<item><title>Blacksmith (Level 1)</title><description>2 new branches.</description></item>
-<item><title>Historian (Level 3)</title><description>Investigate the log 8 times</description></item>
-<item><title>Homeowner (Level 2)</title><description>Set global email address.</description></item>
-<item><title>Miller (Level 4)</title><description>Add only part of a file to the stage 16 times.</description></item>
-<item><title>Goldsmith (Level 3)</title><description>8 reviewed patches before committing.</description></item>
-<item><title>Wisdom (Level 4)</title><description>16 commits</description></item>
-<item><title>Stone Mason (Level 5)</title><description>32 additions</description></item>
-<item><title>Student</title><description>Accessed the help for remote</description></item>
-<item><title>Miller (Level 3)</title><description>Add only part of a file to the stage.</description></item>
+<item><title>Student</title><description>Accessed the documentation for a Git command with git [command] --help</description></item>
 </channel></rss>
