@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Historian (Level 1)</title><description>Investigate the log 2 times using git log.</description></item>
 <item><title>Historian (Level 0)</title><description>Investigate the log 1 times using git log.</description></item>
 <item><title>Goldsmith (Level 2)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
 <item><title>Goldsmith (Level 1)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
