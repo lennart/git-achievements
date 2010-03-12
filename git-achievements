@@ -130,6 +130,14 @@ function check_for_achivements
                 ;;
             esac
             ;;
+        config )
+            if [[ $# -ge 4 && $2 = "--global" && $3 = "user.name" ]] ; then
+                unlock_achievement "Homeowner" "Set global user name."
+            fi
+            if [[ $# -ge 4 && $2 = "--global" && $3 = "user.email" ]] ; then
+                unlock_achievement "Homeowner (Level 2)" "Set global email address."
+            fi
+            ;;
         diff )
             case $2 in
                 --cached )
