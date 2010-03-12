@@ -104,7 +104,12 @@ ul {
     echo '</channel></rss>' >> index.rss
 
     git add index.html index.rss
-    git commit -m "New achievement $1"
+    if [ -z $1 ] ; then
+        message = "Publishing updated achievement"
+    else
+        message = "New achievement $1"
+    fi
+    git commit -m $message
     git push origin
 }
 
@@ -146,6 +151,7 @@ function execute_achivements_command
             echo ""
             echo "Options:"
             echo "    -a show all achievements"
+            echo "    -p publish existing achievements to github"
             ;;
     esac
 }
