@@ -105,7 +105,7 @@ function check_for_achivements
                 -p )
                 count_command "add -p"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage."
+                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times."
                 fi
                 ;;
             esac
@@ -114,6 +114,18 @@ function check_for_achivements
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
                 unlock_achievement "Architect (Level $power)" "$count new Git repositories"
+            fi
+            ;;
+        push )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Socialite (Level $power)" "$count pushes"
+            fi
+            ;;
+        svn|p4 )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Traveler (Level $power)" "$count dealings with $1"
             fi
             ;;
     esac
