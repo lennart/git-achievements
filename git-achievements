@@ -44,6 +44,63 @@ $2
 " |  sed  -e :a -e 's/^.\{1,79\}$/ & /;ta'
 }
 
+function publish_achievements
+{
+    gh_pages=`which git-achievements`
+    gh_pages=`dirname $gh_pages`
+    cd $gh_pages
+
+    user=`git config --global user.name`
+
+echo "
+<head>
+<title>${user}'s Git Achievements</title>
+<style type=\"text/css\">
+body {
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+li.achievement {
+    background-color: #1E2024;
+    border: 1px solid gray;
+    padding: .25em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: .5em;
+}
+div.title {
+    font-weight: bold;
+}
+ul {
+    text-align: left;
+    list-style-type:none;
+}
+
+</style>
+</head>
+<body>
+" > index.html
+
+    echo "<h2>${user}'s Git Achievements</h2>" >> index.html
+
+    total=`cat ${ACHIEVEMENTSLOGFILE} | grep Unlocked | wc -l`
+    echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
+
+    echo "<ul>" >> index.html
+    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li class=\"achievement\">  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+
+    echo "</ul>" >> index.html
+
+    echo "</body></html>" >> index.html
+
+    git add index.html
+    git commit -m "New achievement $1"
+    git push origin
+}
+
 function unlock_achievement
 {
     grep "$1" ${ACHIEVEMENTSLOGFILE} > /dev/null
@@ -52,6 +109,10 @@ function unlock_achievement
     fi
     output_achievement "$@"
     output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
+
+    if [ `git config --global achievement.upload` = "true" ] ; then
+        publish_achievements
+    fi
 }
 
 function log_action
@@ -64,6 +125,9 @@ function log_action
 function execute_achivements_command
 {
     case $2 in
+        -p )
+            publish_achievments
+            ;;
         -a )
             cat ${ACHIEVEMENTSLOGFILE}
             ;;

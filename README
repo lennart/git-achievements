@@ -1,7 +1,8 @@
-Enjoy Git and unlock achievements for doing actions
+Enjoy using Git and unlock achievements for doing actions
 
-There are over 20 Achievement, many with different levels to be achieved.
-After a git command is executed if a new achievement is unlocked a message will appear on your console like this:
+There are over 20 achievement, many with different levels to be achieved.
+After a git command is executed if a new achievement is unlocked
+a message will appear on your console like this:
 
 ********************************************************************************
                             Git Achievement Unlocked!                            
@@ -10,6 +11,18 @@ After a git command is executed if a new achievement is unlocked a message will 
                       Add only part of a file to the stage.                      
 ********************************************************************************
 
+A log of all of your achievements is kept locally, but you can also publish
+it to GitHub.  
+
+For example here is mine: http://icefox.github.com/git-achievements
+
+To push to GitHub first fork the project on GitHub, clone *your* repository
+and set the following config:
+
+git config --global achievement.upload "true"
+
+When an achievement is unlocked the index.html file will be overwritten,
+committed and then a git push origin will be executed.
 
 Install
 -------
