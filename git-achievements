@@ -112,6 +112,12 @@ function check_for_achivements
                 ;;
             esac
             ;;
+        am )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Messenger (Level $power)" "Apply a patch using am $count times."
+            fi
+            ;;
         bisect )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
@@ -206,6 +212,9 @@ function check_for_achivements
                 fi
                 ;;
             esac
+            ;;
+        reflog )
+            unlock_achievement "Weaver" "Investigate old branches"
             ;;
         remote )
             case $2 in
