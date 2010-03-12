@@ -64,7 +64,7 @@ body {
     width: 600px;
     text-align: center;
 }
-li.achievement {
+li {
     background-color: #1E2024;
     border: 1px solid gray;
     padding: .25em;
@@ -79,7 +79,6 @@ ul {
     text-align: left;
     list-style-type:none;
 }
-
 </style>
 </head>
 <body>
@@ -91,7 +90,7 @@ ul {
     echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
 
     echo "<ul>" >> index.html
-    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li class=\"achievement\">  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
 
     echo "</ul>" >> index.html
 
