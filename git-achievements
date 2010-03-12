@@ -97,6 +97,20 @@ function check_for_achivements
             if [ "${powerof2}" = "0" ] ; then
                 unlock_achievement "Wisdom (Level $power)" "$count commits"
             fi
+            case $2 in
+                --amend )
+                count_command "commit --amend"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Seamstress (Level $power)" "$count amended commits."
+                fi
+                ;;
+                -s )
+                count_command "commit -s"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Locksmith (Level $power)" "$count signed commits."
+                fi
+                ;;
+            esac
             ;;
         diff )
             case $2 in
