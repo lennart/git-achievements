@@ -324,7 +324,9 @@ function check_for_achivements
     fi
 }
 
-git "$@"
+if [ $1 != "achievements" ] ; then
+    git "$@"
+fi
 
 log_action $@
 check_for_achivements $@
