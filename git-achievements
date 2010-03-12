@@ -196,6 +196,14 @@ function check_for_achivements
             if [ "${powerof2}" = "0" ] ; then
                 unlock_achievement "Historian (Level $power)" "Investigate the log $count times"
             fi
+            case $2 in
+                -p* )
+                unlock_achievement "Dentist" "Extract patches with git log."
+                ;;
+                -S* )
+                unlock_achievement "Librarian" "Searched for a specific string with git log."
+                ;;
+            esac
             ;;
         push )
             count_command "$@"
