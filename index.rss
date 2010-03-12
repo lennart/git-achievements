@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Wisdom (Level 2)</title><description>Made 4 commits using git commit.</description></item>
+<item><title>Goldsmith (Level 1)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
+<item><title>Wisdom (Level 1)</title><description>Made 2 commits using git commit.</description></item>
 <item><title>Miller (Level 1)</title><description>Add only part of a file to the stage 2 times.</description></item>
 <item><title>Stone Mason (Level 2)</title><description>Use git add to add to the staging area.</description></item>
 <item><title>Stone Mason (Level 1)</title><description>Use git add to add to the staging area.</description></item>
