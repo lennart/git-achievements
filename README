@@ -1,34 +1,43 @@
-Enjoy using Git and unlock achievements for doing actions
+Git-Achievements records all of the achievements you acquire while using Git.
 
-There are over 20 achievement, many with different levels to be achieved.
+There are over 25 achievement, most with different levels to be achieved.
 After a git command is executed if a new achievement is unlocked
-a message will appear on your console like this:
+git-achievements will display a message on the console for your enjoyment:
 
 ********************************************************************************
-                            Git Achievement Unlocked!                            
+                            Git Achievement Unlocked!
 
-                                Miller (Level 1)                                
-                      Add only part of a file to the stage.                      
+                                Miller (Level 1)
+                      Add only part of a file to the stage.
 ********************************************************************************
+
+
+GitHub Pages
+------------
 
 A log of all of your achievements is kept locally, but you can also publish
-it to GitHub.  
+it to GitHub pages so you can share your achievements.
 
 For example here is mine: http://icefox.github.com/git-achievements
 
-To push to GitHub first fork the project on GitHub, clone *your* repository
-and set the following config:
+To push your achievements to GitHub first fork the project on GitHub,
+clone *your* repository and set the following config to true:
 
 git config --global achievement.upload "true"
 
 When an achievement is unlocked the index.html file will be overwritten,
-committed and then a git push origin will be executed.
+committed and then a 'git push origin' will be executed.
+
 
 Install
 -------
 Add git-achievements to your path and alias git to git-achievements
 
 For example add the following to the end of your ~/.bash_profile
+
 export PATH=$PATH:~/git/git-achievements
 alias git='git-achievements'
 
+You can get your first achievement by running
+
+    git achievements --help
