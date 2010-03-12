@@ -168,9 +168,7 @@ function check_for_achivements
    case $1 in
         achievements )
             execute_achivements_command "$@"
-            exit $?
             ;;
-
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
