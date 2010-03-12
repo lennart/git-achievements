@@ -79,6 +79,9 @@ ul {
     text-align: left;
     list-style-type:none;
 }
+#locked {
+    visibility: hidden;
+}
 </style>
 </head>
 <body>
@@ -93,6 +96,32 @@ ul {
     cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
 
     echo "</ul>" >> index.html
+
+    # List locked achievements
+    cat git-achievements  | grep 'unlock_achievement ' | grep -v sed | sed -e 's/ *unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
+
+    total=`cat all.html  | wc -l`
+    echo "<script type=\"text/javascript\">
+function showLocked() {
+    document.getElementById('locked').style.visibility = 'visible';
+    document.getElementById('showlocked').style.visibility = 'hidden';
+}
+</script>
+<a id=\"showlocked\" href=\"javascript:showLocked()\" >Show locked Achievements</a>
+<div id=\"locked\">
+There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
+<ul>" >> index.html
+
+    cat all.html  | while read line ;
+    do
+        stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e s/\(.*//g`
+        grep "$stripedline" index.html > /dev/null
+        if [ ! $? -eq 0 ] ; then
+            echo $line >> index.html
+        fi
+    done
+    echo '</ul></div>' >> index.html
+    rm all.html
 
     echo "</body></html>" >> index.html
 
