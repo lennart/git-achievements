@@ -124,6 +124,12 @@ function check_for_achivements
                 unlock_achievement "Hunter (Level $power)" "Used git bisect $count times"
             fi
             ;;
+        blame )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Investigator (Level $power)" "$count hunts for the owner of changes using blame."
+            fi
+            ;;
         cherry-pick )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
