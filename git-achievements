@@ -129,6 +129,12 @@ function check_for_achivements
             fi
             ;;
     esac
+
+    case $2 in
+        --help )
+            unlock_achievement "Student" "Accessed the documentation for a Git command"
+            ;;
+    esac
 }
 
 git "$@"
