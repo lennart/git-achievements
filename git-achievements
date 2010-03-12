@@ -185,6 +185,12 @@ function check_for_achivements
                 unlock_achievement "Architect (Level $power)" "$count new Git repositories"
             fi
             ;;
+        log )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Historian (Level $power)" "Investigate the log $count times"
+            fi
+            ;;
         push )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
