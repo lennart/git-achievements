@@ -104,12 +104,12 @@ ul {
 
     git add index.html index.rss
     if [ -z $1 ] ; then
-        message = "Publishing updated achievement"
+        message="Publishing updated achievement"
     else
-        message = "New achievement $1"
+        message="New achievement $1"
     fi
-    git commit -m $message
-    git push origin
+    git commit -m "${message}"
+    git push origin gh-pages
 }
 
 function unlock_achievement
