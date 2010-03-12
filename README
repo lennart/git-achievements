@@ -1,0 +1,21 @@
+Enjoy Git and unlock achievements for doing actions
+
+There are over 20 Achievement, many with different levels to be achieved.
+After a git command is executed if a new achievement is unlocked a message will appear on your console like this:
+
+********************************************************************************
+                            Git Achievement Unlocked!                            
+
+                                Miller (Level 1)                                
+                      Add only part of a file to the stage.                      
+********************************************************************************
+
+
+Install
+-------
+Add git-achievements to your path and alias git to git-achievements
+
+For example add the following to the end of your ~/.bash_profile
+export PATH=$PATH:~/git/git-achievements
+alias git='git-achievements'
+
