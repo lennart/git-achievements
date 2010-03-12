@@ -46,10 +46,6 @@ $2
 
 function publish_achievements
 {
-    abortcount=` gs | grep modified | wc -l`
-    if [ ! $abortcount -eq 0 ] ; then
-        return
-    fi
     gh_pages=`which git-achievements`
     gh_pages=`dirname $gh_pages`
     cd $gh_pages
@@ -105,6 +101,11 @@ ul {
     echo "<title>${user}'s Git Achievements</title>" >> index.rss
     cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
     echo '</channel></rss>' >> index.rss
+
+    abortcount=` gs | grep modified | wc -l`
+    if [ ! $abortcount -eq 0 ] ; then
+        return
+    fi
 
     git add index.html index.rss
     if [ -z $1 ] ; then
