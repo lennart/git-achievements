@@ -182,6 +182,11 @@ function check_for_achivements
             unlock_achievement "Student" "Accessed the documentation for a Git command"
             ;;
     esac
+
+    hooks=`ls .git/hooks/ | grep -v sample | wc -l`
+    if [ $hooks -ge 1 ] ; then
+        unlock_achievement "Master Craftsman (Level: $hooks)" "Custom installed hooks."
+    fi
 }
 
 git "$@"
