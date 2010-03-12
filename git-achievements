@@ -180,7 +180,7 @@ function check_for_achivements
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "Use git add to add to the staging area."
+                unlock_achievement "Stone Mason (Level $power)" "Added files to the index area for inclusion in the next commit with git add."
             fi
             case $2 in
                 *.gitignore )
