@@ -160,6 +160,9 @@ function count_command
     export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" $ACTIONLOGFILE`
     export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" $ACTIONLOGFILE`
     export count=`awk "START {n=0} /$1/ {n++} END { print n }" $ACTIONLOGFILE`
+    if [ $count -eq 1 ] ; then
+        powerof2="1"
+    fi
     #echo "$1 $powerof2 $power $count"
 }
 
