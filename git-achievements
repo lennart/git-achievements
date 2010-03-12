@@ -73,7 +73,10 @@ function check_for_achivements
         remote )
             case $2 in
                 add )
-                unlock_achievement "Caretaker" "Kept your repository clean by adding a .gitignore file"
+                count_command "remote add"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Merchant (Level $power)" "Added $count external repositories."
+                fi
                 ;;
             esac
             ;;
@@ -132,13 +135,13 @@ function check_for_achivements
         push )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Socialite (Level $power)" "$count pushes"
+                unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository"
             fi
             ;;
         svn|p4 )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Traveler (Level $power)" "$count dealings with $1"
+                unlock_achievement "Traveler (Level $power)" "$count dealings with another rcs."
             fi
             ;;
     esac
