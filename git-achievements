@@ -126,7 +126,7 @@ function check_for_achivements
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "$count additions"
+                unlock_achievement "Stone Mason (Level $power)" "$count additions to the staging area."
             fi
             case $2 in
                 *.gitignore )
