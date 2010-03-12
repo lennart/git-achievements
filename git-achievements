@@ -102,7 +102,7 @@ ul {
     cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
     echo '</channel></rss>' >> index.rss
 
-    abortcount=`git status | grep modified | wc -l`
+    abortcount=`git status | grep 'Changes to be committed' | wc -l`
     if [ ! $abortcount -eq 0 ] ; then
         return
     fi
