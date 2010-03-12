@@ -159,6 +159,16 @@ function check_for_achivements
                 unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository"
             fi
             ;;
+        rebase )
+            case $2 in
+                -i )
+                count_command "rebase -i"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Butcher (Level $power)" "$count interactive rebases."
+                fi
+                ;;
+            esac
+            ;;
         remote )
             case $2 in
                 add )
