@@ -94,6 +94,16 @@ function check_for_achivements
                 unlock_achievement "Cherry Picker (Level $power)" "$count cherry-picks"
             fi
             ;;
+        checkout )
+            case $2 in
+                -b )
+                count_command "checkout -b"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Blacksmith (Level $power)" "$count new branches."
+                fi
+                ;;
+            esac
+            ;;
         commit )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
