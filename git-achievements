@@ -46,6 +46,10 @@ $2
 
 function publish_achievements
 {
+    abortcount=` gs | grep modified | wc -l`
+    if [ ! $abortcount -eq 0 ] ; then
+        return
+    fi
     gh_pages=`which git-achievements`
     gh_pages=`dirname $gh_pages`
     cd $gh_pages
