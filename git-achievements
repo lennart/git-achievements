@@ -1,0 +1,94 @@
+#!/bin/bash
+#
+# Enjoy Git while unlocking achievements for doing actions
+# 
+# Copyright Benjamin C. Meyer 2010 <ben@meyerhome.net>
+#
+
+ACTIONLOGFILE="$HOME/.git-achievements-action.log"
+ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
+
+function output_achievement
+{
+echo "
+********************************************************************************
+Git Achievement Unlocked!
+
+$1
+$2
+********************************************************************************
+" |  sed  -e :a -e 's/^.\{1,79\}$/ & /;ta'
+}
+
+function unlock_achievement
+{
+    output_achievement "$@"
+    output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
+}
+
+function log_action
+{
+    echo "$@" >> ${ACTIONLOGFILE}
+    echo -n "Date: " >> ${ACTIONLOGFILE}
+    date >> ${ACTIONLOGFILE}
+}
+
+function execute_achivements_command
+{
+    case $2 in
+        -a )
+            cat ${ACHIEVEMENTSLOGFILE}
+            ;;
+        * )
+            echo "Git Achievements"
+            count=`cat ${ACHIEVEMENTSLOGFILE}| grep Unlocked | wc -l`
+            echo ""
+            echo "You currently have: $count achievements"
+            echo ""
+            echo "Options:"
+            echo "    -a show all achievements"
+            ;;
+    esac
+}
+
+function count_command
+{
+    export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" $ACTIONLOGFILE`
+    export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" $ACTIONLOGFILE`
+    export count=`awk "START {n=0} /$1/ {n++} END { print n }" $ACTIONLOGFILE`
+    #echo "$1 $powerof2 $power $count"
+}
+
+function check_for_achivements
+{
+   case $1 in
+        achievements )
+            execute_achivements_command "$@"
+            exit $?
+            ;;
+        commit )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Wisdom (Level $power)" "$count commits"
+            fi
+            ;;
+        add )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Stone Mason (Level $power)" "$count additions"
+            fi
+            ;;
+        init )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Architect (Level $power)" "$count new Git repositories"
+            fi
+            ;;
+    esac
+}
+
+git $@
+
+log_action $@
+check_for_achivements $@
+
