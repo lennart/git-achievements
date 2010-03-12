@@ -144,7 +144,7 @@ function execute_achivements_command
             ;;
         * )
             echo "Git Achievements"
-            count=`cat ${ACHIEVEMENTSLOGFILE}| grep Unlocked | wc -l`
+            count=`cat ${ACHIEVEMENTSLOGFILE} 2> /dev/null | grep Unlocked`
             echo ""
             echo "You currently have: $count achievements"
             echo ""
