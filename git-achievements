@@ -55,6 +55,7 @@ function publish_achievements
 echo "
 <head>
 <title>${user}'s Git Achievements</title>
+<link rel=\"alternate\" type=\"application/rss+xml\" title\"rss feed\" href=\"index.rss\">
 <style type=\"text/css\">
 body {
     background-color: black;
@@ -96,7 +97,12 @@ ul {
 
     echo "</body></html>" >> index.html
 
-    git add index.html
+    echo '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>' > index.rss
+
+    cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 > index.rss
+    echo '</channel></rss>' >> index.rss
+
+    git add index.html index.rss
     git commit -m "New achievement $1"
     git push origin
 }
