@@ -195,7 +195,7 @@ function check_for_achivements
 
     hooks=`ls .git/hooks/ | grep -v sample | wc -l`
     if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Craftsman (Level: $hooks)" "Custom installed hooks."
+        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks."
     fi
 }
 
