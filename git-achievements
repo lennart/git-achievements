@@ -70,12 +70,20 @@ function check_for_achivements
             execute_achivements_command "$@"
             exit $?
             ;;
-        remote )
+
+        add )
+            count_command "$@"
+            if [ "${powerof2}" = "0" ] ; then
+                unlock_achievement "Stone Mason (Level $power)" "$count additions to the staging area."
+            fi
             case $2 in
-                add )
-                count_command "remote add"
+                *.gitignore )
+                unlock_achievement "Caretaker" "Kept your repository clean by adding a .gitignore file"
+                ;;
+                -p )
+                count_command "add -p"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Merchant (Level $power)" "Added $count external repositories."
+                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times."
                 fi
                 ;;
             esac
@@ -84,12 +92,6 @@ function check_for_achivements
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
                 unlock_achievement "Cherry Picker (Level $power)" "$count cherry-picks"
-            fi
-            ;;
-        gc )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Chimney Sweeper" "$count garbage collections"
             fi
             ;;
         commit )
@@ -123,22 +125,11 @@ function check_for_achivements
             esac
 
             ;;
-        add )
+        gc )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "$count additions to the staging area."
+                unlock_achievement "Chimney Sweeper" "$count garbage collections"
             fi
-            case $2 in
-                *.gitignore )
-                unlock_achievement "Caretaker" "Kept your repository clean by adding a .gitignore file"
-                ;;
-                -p )
-                count_command "add -p"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times."
-                fi
-                ;;
-            esac
             ;;
         init )
             count_command "$@"
@@ -151,6 +142,16 @@ function check_for_achivements
             if [ "${powerof2}" = "0" ] ; then
                 unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository"
             fi
+            ;;
+        remote )
+            case $2 in
+                add )
+                count_command "remote add"
+                if [ "${powerof2}" = "0" ] ; then
+                    unlock_achievement "Merchant (Level $power)" "Added $count external repositories."
+                fi
+                ;;
+            esac
             ;;
         svn|p4 )
             count_command "$@"
