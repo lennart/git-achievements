@@ -33,7 +33,7 @@ ul {
 <body>
 
 <h2>Benjamin C Meyer's Git Achievements</h2>
-Unlocked 22/31 <a href="http://github.com/icefox/git-achievements">Git Achievements</a> for 85 points<br>
+Unlocked 22/40 <a href="http://github.com/icefox/git-achievements">Git Achievements</a> for 85 points<br>
 <ul>
 <li><div class="title">Apprentice Architect (Level 1)</div>  <div class="info">Created a new repository with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-init.html">git-init</a>.</div></li>
 <li><div class="title">Apprentice Author (Level 1)</div>  <div class="info">Made 2^Level commits using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-commit.html">git-commit</a>.</div></li>
@@ -72,28 +72,39 @@ Unlocked 22/31 <a href="http://github.com/icefox/git-achievements">Git Achieveme
 </ul>
 Git commands sorted by usage:
 <pre style="text-align: left">
-     28 --git-dir=.git
-     25 diff
-     23 status
-     23 add
-     20 commit
+     36 --git-dir=.git
+     34 diff
+     25 add
+     24 status
+     22 commit
      15 --git-dir=/home/ben/git/git-achievements/.git
      12 log
-     10 push
-     10 achievements
+     11 push
+     11 achievements
       6 reflog
       5 rebase
       5 checkout
+      4 show-branch
       4 remote
+      3 whatchanged
+      2 shell
       2 reset
+      2 instaweb
       2 init
       2 gc
       2 format-patch
       2 config
       2 blame
+      1 what-changed
+      1 tag
+      1 stash
       1 show
       1 onto
+      1 imap-send
       1 grep
+      1 fetch
+      1 clean
+      1 apply
       1 am
 </pre>
 <script type="text/javascript">
@@ -104,16 +115,26 @@ function showLocked() {
 </script>
 <a id="showlocked" href="javascript:showLocked()" >Show locked Achievements</a>
 <div id="locked">
-There are 31 Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
+There are 40 Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
 <ul>
 <li><div class="title">Archivist</div><div class="info">Prepare each commit with its patch in one file per commit with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-format-patch.html">git-format-patch</a></div></li>
+<li><div class="title">Baptised</div><div class="info">Set global user name using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-config.html">git-config</a>.</div></li>
+<li><div class="title">Beach Lion</div><div class="info">Restricted login shell for GIT-only SSH access with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-shell.html">git-shell</a></div></li>
 <li><div class="title">Cherry Picker</div><div class="info">Used <a href="http://www.kernel.org/pub/software/scm/git/docs/git-cherry-pick.html">git-cherry-pick</a> to add a sha from another branch into the current branch.</div></li>
-<li><div class="title">Collector</div><div class="info">Investigate old branches by using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-reflog.html">git-reflog</a> --date=relative</div></li>
+<li><div class="title">Cleaning lady</div><div class="info">Remove untracked files from the working tree with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-clean.html">git-clean</a></div></li>
+<li><div class="title">Collector</div><div class="info">Fetches named heads or tags from another repository with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-fetch.html">git-fetch</a></div></li>
 <li><div class="title">Fisherman</div><div class="info">Look for specified patterns in the current repository with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-grep.html">git-grep</a>.</div></li>
+<li><div class="title">Gardner</div><div class="info">Shows the commit ancestry graph with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-show-branch.html">git-show-branch</a></div></li>
+<li><div class="title">Gipsy</div><div class="info">Create, list, delete a tag signed with GPG using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-tag.html">git-tag</a></div></li>
 <li><div class="title">Hunter</div><div class="info">Used <a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git-bisect</a> to perform a binary search to find which change introduced a bug.</div></li>
 <li><div class="title">Messenger</div><div class="info">Applied a patch using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-am.html">git-am</a>.</div></li>
+<li><div class="title">News Reader</div><div class="info">Show logs with difference each commit introduces with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-whatchanged.html">git-whatchanged</a></div></li>
 <li><div class="title">Pilgrim</div><div class="info">Performed a rebase using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-rebase.html">git-rebase</a> --onto.</div></li>
+<li><div class="title">Postman</div><div class="info">Send a collection of patches from stdin to an IMAP folder with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-imap-send.html">git-imap-send</a></div></li>
 <li><div class="title">Presenter</div><div class="info">Shows one or more objects (blobs, trees, tags and commits) with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-show.html">git-show</a></div></li>
+<li><div class="title">Product Manager</div><div class="info">Stash the changes in a dirty working directory away with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-stash.html">git-stash</a>.</div></li>
+<li><div class="title">Stamp Collector</div><div class="info">Investigate old branches by using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-reflog.html">git-reflog</a> --date=relative</div></li>
 <li><div class="title">Traveler</div><div class="info">Streamed changes between another rcs with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html">git-svn</a> or <a href="http://www.kernel.org/pub/software/scm/git/docs/git-p4.html">git-p4</a>.</div></li>
+<li><div class="title">Web Designer</div><div class="info">Instantly browse your working repository in gitweb with <a href="http://www.kernel.org/pub/software/scm/git/docs/git-instaweb.html">git-instaweb</a></div></li>
 </ul></div>
 </body></html>
