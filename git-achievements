@@ -32,10 +32,10 @@
 function git_achivements_command
 {
     case $2 in
-        -p )
+        -p|--publish )
             publish_achievements
             ;;
-        -a )
+        -l|--list )
             cat "${ACHIEVEMENTSLOGFILE}"
             ;;
         * )
@@ -45,8 +45,8 @@ function git_achivements_command
             echo "You currently have: $count achievements"
             echo ""
             echo "Options:"
-            echo "    -a show all achievements"
-            echo "    -p publish existing achievements to github"
+            echo "    -l --list    Show all achievements."
+            echo "    -p --publish Publish existing achievements and push to origin."
             ;;
     esac
 }
