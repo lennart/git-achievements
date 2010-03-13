@@ -226,6 +226,11 @@ function check_for_achievements
             ;;
         reflog )
             unlock_achievement "Weaver" "Investigate old branches by using git reflog"
+            case $2 in
+                --date=relative )
+                unlock_achievement "Collector" "Investigate old branches by using git reflog --date=relative"
+                ;;
+            esac
             ;;
         remote )
             case $2 in
