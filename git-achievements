@@ -100,7 +100,7 @@ function check_for_achievements
     # Anyone know of a cleaner way of checking for hooks?
     hooks=`ls .git/hooks/ 2>/dev/null | grep -v sample | wc -l`
     if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks are present which help catch issues before they are shared."
+        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom git hooks are installed which help catch issues before they are shared."
     fi
 
     case $2 in
@@ -117,7 +117,7 @@ function check_for_achievements
         add )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "Added files to the index area for inclusion in the next commit with git add."
+                unlock_achievement "Stone Mason (Level $power)" "Added files to the index area for inclusion in the next commit with git add"
             fi
             case $2 in
                 *.gitignore )
@@ -126,7 +126,7 @@ function check_for_achievements
                 -p )
                 count_command "add -p"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times."
+                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times with git add -p."
                 fi
                 ;;
             esac
@@ -134,13 +134,13 @@ function check_for_achievements
         am )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Messenger (Level $power)" "Apply a patch using am $count times."
+                unlock_achievement "Messenger (Level $power)" "Applied a patch using git am."
             fi
             ;;
         bisect )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Hunter (Level $power)" "Used git bisect $count times to perform a binary search to find which change introduced a bug."
+                unlock_achievement "Hunter (Level $power)" "Used git bisect to perform a binary search to find which change introduced a bug."
             fi
             ;;
         blame )
@@ -160,7 +160,7 @@ function check_for_achievements
                 -b )
                 count_command "checkout -b"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Blacksmith (Level $power)" "Created a branch using checkout -b."
+                    unlock_achievement "Blacksmith (Level $power)" "Created a branch using git checkout -b."
                 fi
                 ;;
             esac
@@ -168,13 +168,13 @@ function check_for_achievements
         commit )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Wisdom (Level $power)" "Made $count commits using git commit."
+                unlock_achievement "Wisdom (Level $power)" "Made 2^X commits using git commit."
             fi
             case $2 in
                 --amend )
                 count_command "commit --amend"
                 if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Seamstress (Level $power)" "$count amended commits with git commit --amend."
+                    unlock_achievement "Seamstress (Level $power)" "amended a commit with git commit --amend."
                 fi
                 ;;
                 -s )
@@ -219,7 +219,7 @@ function check_for_achievements
         log )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Historian (Level $power)" "Investigate the log $count times using git log."
+                unlock_achievement "Historian (Level $power)" "Investigate the commit log using git log."
             fi
             case $2 in
                 -p* )
@@ -233,7 +233,7 @@ function check_for_achievements
         push )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Socialite (Level $power)" "$count pushes to a remote repository using git push"
+                unlock_achievement "Socialite (Level $power)" "pushed a branch to a remote repository using git push"
             fi
             ;;
         rebase )
@@ -262,7 +262,7 @@ function check_for_achievements
         svn|p4 )
             count_command "$@"
             if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Traveler (Level $power)" "$count dealings with another rcs such as svn or p4."
+                unlock_achievement "Traveler (Level $power)" "Streamed changes between another rcs with git svn or git p4."
             fi
             ;;
     esac
