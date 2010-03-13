@@ -394,7 +394,7 @@ There are $total Achievements in total and achievements that have X can can be l
     # Update the RSS feed
     echo '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>' > index.rss
     echo "<title>${user}'s Git Achievements</title>" >> index.rss
-    cat "${ACHIEVEMENTSLOGFILE}"  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
+    cat "${ACHIEVEMENTSLOGFILE}"  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tail -n 20 | sed '1!G;h;$!d' >> index.rss
     echo '</channel></rss>' >> index.rss
 
     abortcount=`git status | grep 'Changes to be committed' | wc -l`
@@ -418,7 +418,6 @@ There are $total Achievements in total and achievements that have X can can be l
 
 ACTIONLOGFILE="$HOME/.git-achievements-action.log"
 ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
-log_action $@
 
 if [ ! "$1" = "achievements" ] ; then
     git "$@"
@@ -429,4 +428,5 @@ else
     git_achivements_command "$@"
 fi
 
+log_action $@
 check_for_achievements $@
