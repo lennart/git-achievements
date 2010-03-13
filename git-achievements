@@ -95,7 +95,7 @@ function count_command
     #echo "$1 $powerof2 $power $count"
 }
 
-function check_for_achivements
+function check_for_achievements
 {
    case $1 in
         achievements )
@@ -375,5 +375,5 @@ ACTIONLOGFILE="$HOME/.git-achievements-action.log"
 ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
 
 log_action $@
-check_for_achivements $@
+check_for_achievements $@
 
