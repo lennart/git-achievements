@@ -177,7 +177,7 @@ function check_for_achievements
                 count_unlock_achievement "Seamstress" "amended a commit with git commit --amend." "commit --amend"
                 ;;
                 -s )
-                count_unlock_achievement "Locksmith" "Add Signed-off-by line by the committer at the end of the commit log message using git commit -s." "commit -s"
+                count_unlock_achievement "Locksmith" "Add Signed-off-by line at the end of the commit log message using git commit -s." "commit -s"
                 ;;
             esac
             ;;
