@@ -402,7 +402,7 @@ There are $total Achievements in total and achievements that have X can can be l
         return
     fi
 
-    if [ ! `git config --global achievement.upload` = "true" ] ; then
+    if [ ! "`git config --global achievement.upload`" = "true" ] ; then
         return
     fi
 
