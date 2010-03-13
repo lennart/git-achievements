@@ -36,11 +36,11 @@ function git_achivements_command
             publish_achievements
             ;;
         -a )
-            cat ${ACHIEVEMENTSLOGFILE}
+            cat "${ACHIEVEMENTSLOGFILE}"
             ;;
         * )
             echo "Git Achievements"
-            count=`cat ${ACHIEVEMENTSLOGFILE} 2> /dev/null | grep Unlocked | wc -l`
+            count=`cat "${ACHIEVEMENTSLOGFILE}" 2> /dev/null | grep Unlocked | wc -l`
             echo ""
             echo "You currently have: $count achievements"
             echo ""
@@ -53,8 +53,8 @@ function git_achivements_command
 
 function log_action
 {
-    echo "$@" >> ${ACTIONLOGFILE}
-    echo -n "Date: " >> ${ACTIONLOGFILE}
+    echo "$@" >> "${ACTIONLOGFILE}"
+    echo -n "Date: " >> "${ACTIONLOGFILE}"
     date >> ${ACTIONLOGFILE}
 }
 
@@ -72,12 +72,12 @@ $2
 
 function unlock_achievement
 {
-    grep "$1" ${ACHIEVEMENTSLOGFILE} > /dev/null
+    grep "$1" "${ACHIEVEMENTSLOGFILE}" > /dev/null
     if [ $? -eq 0 ] ; then
         return
     fi
     output_achievement "$@"
-    output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
+    output_achievement "$@" >> "${ACHIEVEMENTSLOGFILE}"
 
     if [ `git config --global achievement.upload` = "true" ] ; then
         publish_achievements $@
@@ -86,9 +86,9 @@ function unlock_achievement
 
 function count_command
 {
-    export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" $ACTIONLOGFILE`
-    export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" $ACTIONLOGFILE`
-    export count=`awk "START {n=0} /$1/ {n++} END { print n }" $ACTIONLOGFILE`
+    export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" "$ACTIONLOGFILE"`
+    export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" "$ACTIONLOGFILE"`
+    export count=`awk "START {n=0} /$1/ {n++} END { print n }" "$ACTIONLOGFILE"`
     if [ $count -eq 1 ] ; then
         powerof2="1"
     fi
@@ -310,11 +310,11 @@ ul {
 
     echo "<h2>${user}'s Git Achievements</h2>" >> index.html
 
-    total=`cat ${ACHIEVEMENTSLOGFILE} | grep Unlocked | wc -l`
+    total=`cat "${ACHIEVEMENTSLOGFILE}" | grep Unlocked | wc -l`
     echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
 
     echo "<ul>" >> index.html
-    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+    cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
 
     echo "</ul>" >> index.html
 
@@ -349,7 +349,7 @@ There are $total Achievements in total and achievements that have X can can be l
     # Update the RSS feed
     echo '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>' > index.rss
     echo "<title>${user}'s Git Achievements</title>" >> index.rss
-    cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
+    cat "${ACHIEVEMENTSLOGFILE}"  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
     echo '</channel></rss>' >> index.rss
 
     abortcount=`git status | grep 'Changes to be committed' | wc -l`
