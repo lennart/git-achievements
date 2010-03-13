@@ -379,4 +379,3 @@ ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
 
 log_action $@
 check_for_achievements $@
-
