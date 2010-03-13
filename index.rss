@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Made 8 commits using git commit.</title><item><title>Reviewed patches before committing with git diff --cached.</title><description>Wisdom (Level 3)</description></item>
+<item><title>Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</title><description>Goldsmith (Level 2)</description></item>
+<item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
+<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add.\n Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</description></item>
+<item><title>Apprentice Stone Mason (Level 2)</title><description>Added files to the index area for inclusion in the next commit with git add. Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</description></item>
+<item><title>Apprentice Stone Mason (Level 1)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
+<item><title>Librarian</title><description>Looked for differences that introduce or remove an instance of a string with git log -S</description></item>
+<item><title>Master Carpenter (Level 18)</title><description>Custom installed hooks are present which help catch issues before they are shared.</description></item>
 <item><title>Miller (Level 2)</title><description>Add only part of a file to the stage 4 times.</description></item>
 <item><title>Caretaker</title><description>Added a .gitignore file to a repository.</description></item>
 <item><title>Wisdom (Level 2)</title><description>Made 4 commits using git commit.</description></item>
 <item><title>Goldsmith (Level 1)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
-<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
 <item><title>Wisdom (Level 1)</title><description>Made 2 commits using git commit.</description></item>
 <item><title>Miller (Level 1)</title><description>Add only part of a file to the stage 2 times.</description></item>
-<item><title>Stone Mason (Level 2)</title><description>Use git add to add to the staging area.</description></item>
-<item><title>Stone Mason (Level 1)</title><description>Use git add to add to the staging area.</description></item>
 <item><title>Student</title><description>Accessed the documentation for a Git command with git [command] --help</description></item>
 </channel></rss>
