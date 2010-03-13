@@ -313,18 +313,27 @@ ul {
 
     echo "<h2>${user}'s Git Achievements</h2>" >> index.html
 
-    total=`cat "${ACHIEVEMENTSLOGFILE}" | grep Unlocked | wc -l`
-    echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
+    cat git-achievements | sed -e 's_git \([a-z0-9-]*\)_<a href="http://www.kernel.org/pub/software/scm/git/docs/git-\1.html">git-\1</a>_g' | grep 'unlock_achievement ' | grep -v ' sed ' | grep -v '\${' | sed -e 's/.*unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' -e 's/\$hooks/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
+    total=`cat all.html | wc -l`
+
+    unlockedCount=`cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) print $0 }' | sed -e 's/(.*//g' | sort | uniq | wc -l`
+    levels=`cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) print $0 }' | grep Level | sed -e 's/.* //g' -e 's/)//g' | awk '{ t=t+$0 } END { print t }'`
+    onelevels=`cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) print $0 }' | wc -l`
+    let points=$levels+$onelevels
+    echo "Unlocked ${unlockedCount}/$total <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> for $points points<br>" >> index.html
+
+    unlocked=`cat "${ACHIEVEMENTSLOGFILE}" | grep Unlocked | wc -l`
 
     echo "<ul>" >> index.html
-    cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+    cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li><div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
 
     echo "</ul>" >> index.html
 
-    # List locked achievements
-    cat git-achievements  | grep 'unlock_achievement ' | grep -v sed | sed -e 's/ *unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
+    echo 'Git commands sorted by usage:' >> index.html
+    echo "<pre style=\"text-align: left\">" >> index.html
+   cat  "${ACTIONLOGFILE}" | grep -v Date | awk '{ print $1 }' | sort | uniq -c | sort -nr >> index.html
+    echo "</pre>" >> index.html
 
-    total=`cat all.html  | wc -l`
     echo "<script type=\"text/javascript\">
 function showLocked() {
     document.getElementById('locked').style.visibility = 'visible';
@@ -336,7 +345,7 @@ function showLocked() {
 There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
 <ul>" >> index.html
 
-    cat all.html  | while read line ;
+    cat all.html | while read line ;
     do
         stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e s/\(.*//g`
         grep "$stripedline" index.html > /dev/null
