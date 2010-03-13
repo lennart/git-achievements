@@ -428,5 +428,9 @@ else
     git_achivements_command "$@"
 fi
 
+if [ "`echo '--git-dir=.git for-ea' | sed -e 's/=.*//g'`" = "--git-dir" ] ; then
+    exit 0
+fi
+
 log_action $@
 check_for_achievements $@
