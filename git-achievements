@@ -89,10 +89,31 @@ function count_command
     export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" "$ACTIONLOGFILE"`
     export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" "$ACTIONLOGFILE"`
     export count=`awk "START {n=0} /$1/ {n++} END { print n }" "$ACTIONLOGFILE"`
-    if [ $count -eq 1 ] ; then
+    if [ ${count} -eq 1 ] ; then
         powerof2="1"
     fi
-    #echo "$1 $powerof2 $power $count"
+    #echo "cmd: $1 powerof2: $powerof2 power: $power count: $count"
+}
+
+function count_unlock_achievement
+{
+    title="${1}"
+    description="${2}"
+    cmd="${3}"
+    count_command "${cmd}"
+    if [ "${powerof2}" = "0" ] ; then
+        case $power in
+            1|2)
+            pre="Apprentice "
+            ;;
+            3|4|5)
+            pre=""
+            ;;
+            *)
+            pre="Master "
+        esac
+        unlock_achievement "${pre}${title} (Level ${power})" "${description}"
+    fi
 }
 
 function check_for_achievements
@@ -115,73 +136,43 @@ function check_for_achievements
             git_achivements_command "$@"
             ;;
         add )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Stone Mason (Level $power)" "Added files to the index area for inclusion in the next commit with git add"
-            fi
+            count_unlock_achievement "Stone Mason" "Added files to the index area for inclusion in the next commit with git add" "$1"
             case $2 in
                 *.gitignore )
                 unlock_achievement "Caretaker" "Added a .gitignore file to a repository."
                 ;;
                 -p )
-                count_command "add -p"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Miller (Level $power)" "Add only part of a file to the stage $count times with git add -p."
-                fi
+                count_unlock_achievement "Miller" "Add only part of a file to the stage $count times with git add -p." "add -p"
                 ;;
             esac
             ;;
         am )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Messenger (Level $power)" "Applied a patch using git am."
-            fi
+            count_unlock_achievement "Messenger" "Applied a patch using git am." "$1"
             ;;
         bisect )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Hunter (Level $power)" "Used git bisect to perform a binary search to find which change introduced a bug."
-            fi
+            count_unlock_achievement "Hunter" "Used git bisect to perform a binary search to find which change introduced a bug." "$1"
             ;;
         blame )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Investigator (Level $power)" "Used git blame to annotates each line in a file with information about the revision which last modified the line."
-            fi
+            count_unlock_achievement "Investigator" "Used git blame to annotates each line in a file with information about the revision which last modified the line." "$1"
             ;;
         cherry-pick )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Cherry Picker (Level $power)" "Used git cherry-pick to add a sha from another branch into the current branch."
-            fi
+            unlock_achievement "Cherry Picker" "Used git cherry-pick to add a sha from another branch into the current branch." "$1"
             ;;
         checkout )
             case $2 in
                 -b )
-                count_command "checkout -b"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Blacksmith (Level $power)" "Created a branch using git checkout -b."
-                fi
+                count_unlock_achievement "Blacksmith" "Created a branch using git checkout -b." "checkout -b"
                 ;;
             esac
             ;;
         commit )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Wisdom (Level $power)" "Made 2^Level commits using git commit."
-            fi
+            count_unlock_achievement "Wisdom" "Made 2^Level commits using git commit." "$1"
             case $2 in
                 --amend )
-                count_command "commit --amend"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Seamstress (Level $power)" "amended a commit with git commit --amend."
-                fi
+                count_unlock_achievement "Seamstress" "amended a commit with git commit --amend." "commit --amend"
                 ;;
                 -s )
-                count_command "commit -s"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Locksmith (Level $power)" "Add Signed-off-by line by the committer at the end of the commit log message using git commit -s."
-                fi
+                count_unlock_achievement "Locksmith" "Add Signed-off-by line by the committer at the end of the commit log message using git commit -s." "commit -s"
                 ;;
             esac
             ;;
@@ -196,31 +187,19 @@ function check_for_achievements
         diff )
             case $2 in
                 --cached )
-                count_command "diff --cached"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Goldsmith (Level $power)" "Reviewed patches before committing with git diff --cached."
-                fi
+                count_unlock_achievement "Goldsmith" "Reviewed patches before committing with git diff --cached." "diff --cached"
                 ;;
             esac
 
             ;;
         gc )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Chimney Sweeper" "Used git gc to run a number of housekeeping tasks on the current repository."
-            fi
+            count_unlock_achievement "Chimney Sweeper" "Used git gc to run a number of housekeeping tasks on the current repository." "$1"
             ;;
         init )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Architect (Level $power)" "Created a new repository with git init."
-            fi
+            count_unlock_achievement "Architect" "Created a new repository with git init." "$1"
             ;;
         log )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Historian (Level $power)" "Investigate the commit log using git log."
-            fi
+            count_unlock_achievement "Historian" "Investigate the commit log using git log." "$1"
             case $2 in
                 -p* )
                 unlock_achievement "Dentist" "Extracted patches using git log -p."
@@ -231,18 +210,12 @@ function check_for_achievements
             esac
             ;;
         push )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Socialite (Level $power)" "pushed a branch to a remote repository using git push"
-            fi
+            count_unlock_achievement "Socialite" "pushed a branch to a remote repository using git push" "$1"
             ;;
         rebase )
             case $2 in
                 -i )
-                count_command "rebase -i"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Butcher (Level $power)" "Performed an interactive rebase using git rebase -i."
-                fi
+                count_unlock_achievement "Butcher" "Performed an interactive rebase using git rebase -i." "rebase -i"
                 ;;
             esac
             ;;
@@ -252,18 +225,12 @@ function check_for_achievements
         remote )
             case $2 in
                 add )
-                count_command "remote add"
-                if [ "${powerof2}" = "0" ] ; then
-                    unlock_achievement "Merchant (Level $power)" "Added an external repository with git remote add."
-                fi
+                count_unlock_achievement "Merchant" "Added an external repository with git remote add." "remote add"
                 ;;
             esac
             ;;
         svn|p4 )
-            count_command "$@"
-            if [ "${powerof2}" = "0" ] ; then
-                unlock_achievement "Traveler (Level $power)" "Streamed changes between another rcs with git svn or git p4."
-            fi
+            count_unlock_achievement "Traveler" "Streamed changes between another rcs with git svn or git p4." "$1"
             ;;
     esac
 }
