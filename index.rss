@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
-<item><title>Reviewed patches before committing with git diff --cached.</title><item><title>Added files to the index area for inclusion in the next commit with git add</title><description>Master Goldsmith (Level -inf)</description></item>
-<item><title>Added files to the index area for inclusion in the next commit with git add</title><description>Master Stone Mason (Level -inf)</description></item>
-<item><title>Made 2^X commits using git commit.</title><description>Stone Mason (Level 5)</description></item>
-<item><title>Investigate the log 2 times using git log.</title><description>Wisdom (Level 4)</description></item>
-<item><title>Made 8 commits using git commit.</title><description>Historian (Level 1)</description></item>
-<item><title>Reviewed patches before committing with git diff --cached.</title><description>Wisdom (Level 3)</description></item>
-<item><title>Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</title><description>Goldsmith (Level 2)</description></item>
-<item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
-<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add.\n Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</description></item>
-<item><title>Apprentice Stone Mason (Level 2)</title><description>Added files to the index area for inclusion in the next commit with git add. Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</description></item>
-<item><title>Apprentice Stone Mason (Level 1)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
-<item><title>Librarian</title><description>Looked for differences that introduce or remove an instance of a string with git log -S</description></item>
-<item><title>Master Carpenter (Level 18)</title><description>Custom installed hooks are present which help catch issues before they are shared.</description></item>
-<item><title>Miller (Level 2)</title><description>Add only part of a file to the stage 4 times.</description></item>
-<item><title>Caretaker</title><description>Added a .gitignore file to a repository.</description></item>
-<item><title>Wisdom (Level 2)</title><description>Made 4 commits using git commit.</description></item>
-<item><title>Goldsmith (Level 1)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
-<item><title>Wisdom (Level 1)</title><description>Made 2 commits using git commit.</description></item>
-<item><title>Miller (Level 1)</title><description>Add only part of a file to the stage 2 times.</description></item>
-<item><title>Student</title><description>Accessed the documentation for a Git command with git [command] --help</description></item>
+<item><title>Stone Mason (Level 5)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Author (Level 4)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Apprentice Miller (Level 2)</title><description>Add only part of a file to the stage 18 times with git add -p.</description></item>
+<item><title>Apprentice Butcher (Level 1)</title><description>Performed an interactive rebase using git rebase -i.</description></item>
+<item><title>Historian (Level 3)</title><description>Investigate the commit log using git log.</description></item>
+<item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Apprentice Goldsmith (Level 2)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Miller (Level 1)</title><description>Add only part of a file to the stage 13 times with git add -p.</description></item>
+<item><title>Author (Level 3)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Dentist</title><description>Extracted patches using git log -p.</description></item>
+<item><title>Apprentice Historian (Level 2)</title><description>Investigate the commit log using git log.</description></item>
+<item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
+<item><title>Weaver</title><description>Investigate old branches by using git reflog</description></item>
+<item><title>Apprentice Investigator (Level 1)</title><description>Used git blame to annotates a file with information about how each line changed.</description></item>
+<item><title>Apprentice Chimney Sweeper (Level 1)</title><description>Used git gc to run a number of housekeeping tasks on the current repository.</description></item>
+<item><title>Apprentice Socialite (Level 2)</title><description>pushed a branch to a remote repository using git push</description></item>
+<item><title>Apprentice Blacksmith (Level 1)</title><description>Created a branch using git checkout -b.</description></item>
+<item><title>Librarian</title><description>Looked for change that introduce or remove a string with git log -S</description></item>
+<item><title>Apprentice Historian (Level 1)</title><description>Investigate the commit log using git log.</description></item>
 </channel></rss>
