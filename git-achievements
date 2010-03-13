@@ -100,7 +100,7 @@ function check_for_achievements
     # Anyone know of a cleaner way of checking for hooks?
     hooks=`ls .git/hooks/ 2>/dev/null | grep -v sample | wc -l`
     if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom git hooks are installed which help catch issues before they are shared."
+        unlock_achievement "Master Carpenter (Level $hooks)" "Custom git hooks are installed which help catch issues before they are shared."
     fi
 
     case $2 in
