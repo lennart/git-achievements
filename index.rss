@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Socialite (Level 4)</title><description>pushed a branch to a remote repository using git push</description></item>
+<item><title>Apprentice Merchant (Level 2)</title><description>Added an external repository with git remote add.</description></item>
+<item><title>Socialite (Level 3)</title><description>pushed a branch to a remote repository using git push</description></item>
+<item><title>Stone Mason (Level 5)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Author (Level 4)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Apprentice Miller (Level 2)</title><description>Add only part of a file to the stage 18 times with git add -p.</description></item>
+<item><title>Apprentice Butcher (Level 1)</title><description>Performed an interactive rebase using git rebase -i.</description></item>
+<item><title>Historian (Level 3)</title><description>Investigate the commit log using git log.</description></item>
+<item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Apprentice Goldsmith (Level 2)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Apprentice Miller (Level 1)</title><description>Add only part of a file to the stage 13 times with git add -p.</description></item>
+<item><title>Author (Level 3)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Dentist</title><description>Extracted patches using git log -p.</description></item>
+<item><title>Apprentice Historian (Level 2)</title><description>Investigate the commit log using git log.</description></item>
+<item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
+<item><title>Weaver</title><description>Investigate old branches by using git reflog</description></item>
+<item><title>Apprentice Investigator (Level 1)</title><description>Used git blame to annotates a file with information about how each line changed.</description></item>
+<item><title>Apprentice Chimney Sweeper (Level 1)</title><description>Used git gc to run a number of housekeeping tasks on the current repository.</description></item>
+<item><title>Apprentice Socialite (Level 2)</title><description>pushed a branch to a remote repository using git push</description></item>
 </channel></rss>
