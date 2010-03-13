@@ -418,12 +418,15 @@ There are $total Achievements in total and achievements that have X can can be l
 
 ACTIONLOGFILE="$HOME/.git-achievements-action.log"
 ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
+log_action $@
 
 if [ ! "$1" = "achievements" ] ; then
     git "$@"
+    if [ ! $? -eq 0 ] ; then
+        exit $?
+    fi
 else
     git_achivements_command "$@"
 fi
 
-log_action $@
 check_for_achievements $@
