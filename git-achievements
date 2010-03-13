@@ -282,9 +282,9 @@ ul {
 </head>
 <body>
 " > index.html
-
     echo "<h2>${user}'s Git Achievements</h2>" >> index.html
 
+    # STATS
     cat git-achievements | sed -e 's_git \([a-z0-9-]*\)_<a href="http://www.kernel.org/pub/software/scm/git/docs/git-\1.html">git-\1</a>_g' | grep 'unlock_achievement ' | grep -v ' sed ' | grep -v '\${' | sed -e 's/.*unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' -e 's/\$hooks/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
     total=`cat all.html | wc -l`
 
@@ -296,16 +296,19 @@ ul {
 
     unlocked=`cat "${ACHIEVEMENTSLOGFILE}" | grep Unlocked | wc -l`
 
+    # Unlocked Achievements
     echo "<ul>" >> index.html
-    cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li><div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+    cat "${ACHIEVEMENTSLOGFILE}" | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li><div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | sort >> index.html
 
     echo "</ul>" >> index.html
 
+    # Git Commands
     echo 'Git commands sorted by usage:' >> index.html
     echo "<pre style=\"text-align: left\">" >> index.html
-   cat  "${ACTIONLOGFILE}" | grep -v Date | awk '{ print $1 }' | sort | uniq -c | sort -nr >> index.html
+    cat  "${ACTIONLOGFILE}" | grep -v Date | awk '{ print $1 }' | sort | uniq -c | sort -nr >> index.html
     echo "</pre>" >> index.html
 
+    # Locked Achievements
     echo "<script type=\"text/javascript\">
 function showLocked() {
     document.getElementById('locked').style.visibility = 'visible';
@@ -317,15 +320,17 @@ function showLocked() {
 There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
 <ul>" >> index.html
 
+    cat index.html | sed -e 's/Apprentice //g' -e 's/Master //g'> temp.html
     cat all.html | while read line ;
     do
-        stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e s/\(.*//g`
-        grep "$stripedline" index.html > /dev/null
+        stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e 's/(.*//g' -e 's/Apprentice //g'`
+        grep "$stripedline" temp.html > /dev/null
         if [ ! $? -eq 0 ] ; then
             echo $line >> index.html
         fi
     done
     echo '</ul></div>' >> index.html
+    rm temp.html
     rm all.html
 
     echo "</body></html>" >> index.html
@@ -341,6 +346,10 @@ There are $total Achievements in total and achievements that have X can can be l
         return
     fi
 
+    if [ ! `git config --global achievement.upload` = "true" ] ; then
+        return
+    fi
+
     git add index.html index.rss
     if [ -z $1 ] ; then
         message="Publishing updated achievement"
@@ -351,12 +360,14 @@ There are $total Achievements in total and achievements that have X can can be l
     git push origin gh-pages
 }
 
-if [ ! $1 = "achievements" ] ; then
-    git "$@"
-fi
-
 ACTIONLOGFILE="$HOME/.git-achievements-action.log"
 ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
+
+if [ ! "$1" = "achievements" ] ; then
+    git "$@"
+else
+    git_achivements_command "$@"
+fi
 
 log_action $@
 check_for_achievements $@
