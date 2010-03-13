@@ -97,7 +97,20 @@ function count_command
 
 function check_for_achievements
 {
-   case $1 in
+    # Anyone know of a cleaner way of checking for hooks?
+    hooks=`ls .git/hooks/ | grep -v sample | wc -l`
+    if [ $hooks -ge 1 ] ; then
+        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks are present which help catch issues before they are shared."
+    fi
+
+    case $2 in
+        --help )
+            unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help"
+            return
+            ;;
+    esac
+
+    case $1 in
         achievements )
             git_achivements_command "$@"
             ;;
@@ -253,18 +266,8 @@ function check_for_achievements
             fi
             ;;
     esac
-
-    case $2 in
-        --help )
-            unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help"
-            ;;
-    esac
-
-    hooks=`ls .git/hooks/ | grep -v sample | wc -l`
-    if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks are present which help catch issues before they are shared."
-    fi
 }
+
 function publish_achievements
 {
     gh_pages=`which git-achievements`
