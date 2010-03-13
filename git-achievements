@@ -412,7 +412,7 @@ There are $total Achievements in total and achievements that have X can can be l
     else
         message="New achievement $1"
     fi
-    git commit -m "${message}"
+    git commit -qm "${message}"
     git push origin gh-pages
 }
 
