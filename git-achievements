@@ -197,8 +197,14 @@ function check_for_achievements
             esac
 
             ;;
+        format-patch )
+            count_unlock_achievement "Archivist" "Prepare each commit with its patch in one file per commit with git format-patch" "$1"
+            ;;
         gc )
             count_unlock_achievement "Chimney Sweeper" "Used git gc to run a number of housekeeping tasks on the current repository." "$1"
+            ;;
+        grep )
+            count_unlock_achievement "Fisherman" "Look for specified patterns in the current repository with git grep." "$1"
             ;;
         init )
             count_unlock_achievement "Architect" "Created a new repository with git init." "$1"
@@ -222,6 +228,9 @@ function check_for_achievements
                 -i )
                 count_unlock_achievement "Butcher" "Performed an interactive rebase using git rebase -i." "rebase -i"
                 ;;
+                --onto )
+                count_unlock_achievement "Pilgrim" "Performed a rebase using git rebase --onto." "rebase --onto"
+                ;;
             esac
             ;;
         reflog )
@@ -238,6 +247,9 @@ function check_for_achievements
                 count_unlock_achievement "Merchant" "Added an external repository with git remote add." "remote add"
                 ;;
             esac
+            ;;
+        show )
+            count_unlock_achievement "Presenter" "Shows one or more objects (blobs, trees, tags and commits) with git show" "$1"
             ;;
         svn|p4 )
             count_unlock_achievement "Traveler" "Streamed changes between another rcs with git svn or git p4." "$1"
