@@ -86,9 +86,12 @@ function unlock_achievement()
 
 function count_command
 {
-    export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" "$ACTIONLOGFILE"`
     export power=`awk "START {n=0} /$1/ {n++} END { print log(n)/log(2) }" "$ACTIONLOGFILE"`
     export count=`awk "START {n=0} /$1/ {n++} END { print n }" "$ACTIONLOGFILE"`
+    #export powerof2=`awk "START {n=0} /$1/ {n++} END { print and(n, n-1) }" "$ACTIONLOGFILE"`
+    # mysys gawk it old and doesn't have the bitwise operation and :( so we have to use perl for now
+    export powerof2=`echo 'use Env; $y=$ENV{'count'}; $x=($y & ($y-1)); print "$x\n" ' | perl -`
+
     if [ ${count} -eq 1 ] ; then
         powerof2="1"
     fi
