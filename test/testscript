@@ -1,0 +1,85 @@
+#!/bin/bash -x
+#
+# This is a test script for git achievements
+#
+
+function runtest() {
+    # setup our push repo
+    mkdir testapplication.push
+    cd testapplication.push
+    git init
+    cd ../
+
+    mkdir testapplication
+    cd testapplication
+
+    git achievements --help
+
+    git config --global user.name "Benjamin C Meyer"
+    git config --global user.email "ben@meyerhome.net"
+
+    git init
+
+    touch README
+    git add README
+    git commit -s -m "First commit"
+
+    git diff --cached
+    echo "hello world" > README
+    git add README
+    git diff --cached
+    git commit -s -m "Second commit"
+
+    touch second_file
+    git blame second_file
+
+    touch .gitignore
+    echo "second_file" >> .gitignore
+    git add .gitignore
+    git commit      -s -m "third commit"
+    git commit --amend -m "Third commit"
+    git commit --amend -m "Third awesome commit"
+
+    git remote add origin ../testapplication.push/.git/
+    git remote add local ../testapplication.push/.git/
+    git push origin
+
+    git log
+    git log -Sworld
+
+    git checkout -b testbranch master
+    git checkout -b otherbranch master
+    git push origin --all
+
+    git gc
+    git gc
+
+    git blame README
+    
+    
+    git reflog
+    
+    mv .git/hooks/pre-commit.sample .git/hooks/pre-commit
+
+    git format-patch HEAD^
+    git reset --hard HEAD^
+    git am -k3 0001*
+}
+
+export PATH=$PATH:$PWD/../
+# can't use an alias in a shell script because it is evaluated at read time
+function git() {
+    git-achievements "$@"
+}
+
+# cleanup
+mv -f ~/.git-achievements.log ~/.git-achievements.bak
+mv -f ~/.git-achievements-action.log ~/.git-achievements-action.bak
+rm -rf testapplication
+rm -rf testapplication.push
+
+runtest
+git achievements -a
+
+mv -f ~/.git-achievements.bak ~/.git-achievements.log
+mv -f ~/.git-achievements-action.bak ~/.git-achievements-action.log
