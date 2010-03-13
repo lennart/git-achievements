@@ -29,144 +29,6 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-ACTIONLOGFILE="$HOME/.git-achievements-action.log"
-ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
-
-function output_achievement
-{
-echo "
-********************************************************************************
-Git Achievement Unlocked!
-
-$1
-$2
-********************************************************************************
-" |  sed  -e :a -e 's/^.\{1,79\}$/ & /;ta'
-}
-
-function publish_achievements
-{
-    gh_pages=`which git-achievements`
-    gh_pages=`dirname $gh_pages`
-    cd $gh_pages
-
-    user=`git config --global user.name`
-
-echo "
-<head>
-<title>${user}'s Git Achievements</title>
-<link rel=\"alternate\" type=\"application/rss+xml\" title\"rss feed\" href=\"index.rss\">
-<style type=\"text/css\">
-body {
-    background-color: black;
-    color: white;
-    margin: 0 auto;
-    width: 600px;
-    text-align: center;
-}
-li {
-    background-color: #1E2024;
-    border: 1px solid gray;
-    padding: .25em;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin-bottom: .5em;
-}
-div.title {
-    font-weight: bold;
-}
-ul {
-    text-align: left;
-    list-style-type:none;
-}
-#locked {
-    visibility: hidden;
-}
-</style>
-</head>
-<body>
-" > index.html
-
-    echo "<h2>${user}'s Git Achievements</h2>" >> index.html
-
-    total=`cat ${ACHIEVEMENTSLOGFILE} | grep Unlocked | wc -l`
-    echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
-
-    echo "<ul>" >> index.html
-    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
-
-    echo "</ul>" >> index.html
-
-    # List locked achievements
-    cat git-achievements  | grep 'unlock_achievement ' | grep -v sed | sed -e 's/ *unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
-
-    total=`cat all.html  | wc -l`
-    echo "<script type=\"text/javascript\">
-function showLocked() {
-    document.getElementById('locked').style.visibility = 'visible';
-    document.getElementById('showlocked').style.visibility = 'hidden';
-}
-</script>
-<a id=\"showlocked\" href=\"javascript:showLocked()\" >Show locked Achievements</a>
-<div id=\"locked\">
-There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
-<ul>" >> index.html
-
-    cat all.html  | while read line ;
-    do
-        stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e s/\(.*//g`
-        grep "$stripedline" index.html > /dev/null
-        if [ ! $? -eq 0 ] ; then
-            echo $line >> index.html
-        fi
-    done
-    echo '</ul></div>' >> index.html
-    rm all.html
-
-    echo "</body></html>" >> index.html
-
-    # Update the RSS feed
-    echo '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>' > index.rss
-    echo "<title>${user}'s Git Achievements</title>" >> index.rss
-    cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
-    echo '</channel></rss>' >> index.rss
-
-    abortcount=`git status | grep 'Changes to be committed' | wc -l`
-    if [ ! $abortcount -eq 0 ] ; then
-        return
-    fi
-
-    git add index.html index.rss
-    if [ -z $1 ] ; then
-        message="Publishing updated achievement"
-    else
-        message="New achievement $1"
-    fi
-    git commit -m "${message}"
-    git push origin gh-pages
-}
-
-function unlock_achievement
-{
-    grep "$1" ${ACHIEVEMENTSLOGFILE} > /dev/null
-    if [ $? -eq 0 ] ; then
-        return
-    fi
-    output_achievement "$@"
-    output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
-
-    if [ `git config --global achievement.upload` = "true" ] ; then
-        publish_achievements $@
-    fi
-}
-
-function log_action
-{
-    echo "$@" >> ${ACTIONLOGFILE}
-    echo -n "Date: " >> ${ACTIONLOGFILE}
-    date >> ${ACTIONLOGFILE}
-}
-
 function execute_achivements_command
 {
     case $2 in
@@ -187,6 +49,39 @@ function execute_achivements_command
             echo "    -p publish existing achievements to github"
             ;;
     esac
+}
+
+function log_action
+{
+    echo "$@" >> ${ACTIONLOGFILE}
+    echo -n "Date: " >> ${ACTIONLOGFILE}
+    date >> ${ACTIONLOGFILE}
+}
+
+function output_achievement
+{
+echo "
+********************************************************************************
+Git Achievement Unlocked!
+
+$1
+$2
+********************************************************************************
+" |  sed  -e :a -e 's/^.\{1,79\}$/ & /;ta'
+}
+
+function unlock_achievement
+{
+    grep "$1" ${ACHIEVEMENTSLOGFILE} > /dev/null
+    if [ $? -eq 0 ] ; then
+        return
+    fi
+    output_achievement "$@"
+    output_achievement "$@" >> ${ACHIEVEMENTSLOGFILE}
+
+    if [ `git config --global achievement.upload` = "true" ] ; then
+        publish_achievements $@
+    fi
 }
 
 function count_command
@@ -370,10 +265,114 @@ function check_for_achivements
         unlock_achievement "Master Carpenter (Level: $hooks)" "Custom installed hooks are present which help catch issues before they are shared."
     fi
 }
+function publish_achievements
+{
+    gh_pages=`which git-achievements`
+    gh_pages=`dirname $gh_pages`
+    cd $gh_pages
+
+    user=`git config --global user.name`
+
+echo "
+<head>
+<title>${user}'s Git Achievements</title>
+<link rel=\"alternate\" type=\"application/rss+xml\" title\"rss feed\" href=\"index.rss\">
+<style type=\"text/css\">
+body {
+    background-color: black;
+    color: white;
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+li {
+    background-color: #1E2024;
+    border: 1px solid gray;
+    padding: .25em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-bottom: .5em;
+}
+div.title {
+    font-weight: bold;
+}
+ul {
+    text-align: left;
+    list-style-type:none;
+}
+#locked {
+    visibility: hidden;
+}
+</style>
+</head>
+<body>
+" > index.html
+
+    echo "<h2>${user}'s Git Achievements</h2>" >> index.html
+
+    total=`cat ${ACHIEVEMENTSLOGFILE} | grep Unlocked | wc -l`
+    echo "<center>${total} <a href=\"http://github.com/icefox/git-achievements\">Git Achievements</a> unlocked</center><br>" >> index.html
+
+    echo "<ul>" >> index.html
+    cat ${ACHIEVEMENTSLOGFILE} | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<li>  <div class=\"title\">" $0 "</div>"; else printf "  <div class=\"info\">" $0 "</div></li>\n" }' | tac >> index.html
+
+    echo "</ul>" >> index.html
+
+    # List locked achievements
+    cat git-achievements  | grep 'unlock_achievement ' | grep -v sed | sed -e 's/ *unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' > all.html
+
+    total=`cat all.html  | wc -l`
+    echo "<script type=\"text/javascript\">
+function showLocked() {
+    document.getElementById('locked').style.visibility = 'visible';
+    document.getElementById('showlocked').style.visibility = 'hidden';
+}
+</script>
+<a id=\"showlocked\" href=\"javascript:showLocked()\" >Show locked Achievements</a>
+<div id=\"locked\">
+There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
+<ul>" >> index.html
+
+    cat all.html  | while read line ;
+    do
+        stripedline=`echo $line | sed -e 's/<\/div>.*//g' -e s/\(.*//g`
+        grep "$stripedline" index.html > /dev/null
+        if [ ! $? -eq 0 ] ; then
+            echo $line >> index.html
+        fi
+    done
+    echo '</ul></div>' >> index.html
+    rm all.html
+
+    echo "</body></html>" >> index.html
+
+    # Update the RSS feed
+    echo '<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>' > index.rss
+    echo "<title>${user}'s Git Achievements</title>" >> index.rss
+    cat ${ACHIEVEMENTSLOGFILE}  | grep -v '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tac | head -n 20 >> index.rss
+    echo '</channel></rss>' >> index.rss
+
+    abortcount=`git status | grep 'Changes to be committed' | wc -l`
+    if [ ! $abortcount -eq 0 ] ; then
+        return
+    fi
+
+    git add index.html index.rss
+    if [ -z $1 ] ; then
+        message="Publishing updated achievement"
+    else
+        message="New achievement $1"
+    fi
+    git commit -m "${message}"
+    git push origin gh-pages
+}
 
 if [ $1 != "achievements" ] ; then
     git "$@"
 fi
+
+ACTIONLOGFILE="$HOME/.git-achievements-action.log"
+ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
 
 log_action $@
 check_for_achivements $@
