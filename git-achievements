@@ -187,10 +187,10 @@ function check_for_achievements
             ;;
         config )
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.name" ]] ; then
-                unlock_achievement "Homeowner (name)" "Set global user name using git config."
+                unlock_achievement "Homeowner [name]" "Set global user name using git config."
             fi
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.email" ]] ; then
-                unlock_achievement "Homeowner (address)" "Set global email address using git config."
+                unlock_achievement "Homeowner [address]" "Set global email address using git config."
             fi
             ;;
         diff )
