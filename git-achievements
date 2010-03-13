@@ -70,7 +70,7 @@ $2
 " |  sed  -e :a -e 's/^.\{1,79\}$/ & /;ta'
 }
 
-function unlock_achievement
+function unlock_achievement()
 {
     grep "$1" "${ACHIEVEMENTSLOGFILE}" > /dev/null 2>/dev/null
     if [ $? -eq 0 ] ; then
@@ -170,6 +170,9 @@ function check_for_achievements
                 ;;
             esac
             ;;
+        clean )
+            count_unlock_achievement "Cleaning lady" "Remove untracked files from the working tree with git clean" "$1"
+            ;;
         commit )
             count_unlock_achievement "Author" "Made 2^Level commits using git commit." "$1"
             case $2 in
@@ -183,10 +186,10 @@ function check_for_achievements
             ;;
         config )
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.name" ]] ; then
-                unlock_achievement "Homeowner - name" "Set global user name using git config."
+                unlock_achievement "Baptised" "Set global user name using git config."
             fi
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.email" ]] ; then
-                unlock_achievement "Homeowner - address" "Set global email address using git config."
+                unlock_achievement "Homeowner" "Set global email address using git config."
             fi
             ;;
         diff )
@@ -197,6 +200,9 @@ function check_for_achievements
             esac
 
             ;;
+        fetch )
+            count_unlock_achievement "Collector" "Fetches named heads or tags from another repository with git fetch" "$1"
+            ;;
         format-patch )
             count_unlock_achievement "Archivist" "Prepare each commit with its patch in one file per commit with git format-patch" "$1"
             ;;
@@ -206,8 +212,14 @@ function check_for_achievements
         grep )
             count_unlock_achievement "Fisherman" "Look for specified patterns in the current repository with git grep." "$1"
             ;;
+        imap-send )
+            count_unlock_achievement "Postman" "Send a collection of patches from stdin to an IMAP folder with git imap-send" "$1"
+            ;;
         init )
             count_unlock_achievement "Architect" "Created a new repository with git init." "$1"
+            ;;
+        instaweb )
+            count_unlock_achievement "Web Designer" "Instantly browse your working repository in gitweb with git instaweb" "$1"
             ;;
         log )
             count_unlock_achievement "Historian" "Investigate the commit log using git log." "$1"
@@ -237,7 +249,7 @@ function check_for_achievements
             unlock_achievement "Weaver" "Investigate old branches by using git reflog"
             case $2 in
                 --date=relative )
-                unlock_achievement "Collector" "Investigate old branches by using git reflog --date=relative"
+                unlock_achievement "Stamp Collector" "Investigate old branches by using git reflog --date=relative"
                 ;;
             esac
             ;;
@@ -248,11 +260,26 @@ function check_for_achievements
                 ;;
             esac
             ;;
+        shell )
+            unlock_achievement "Beach Lion" "Restricted login shell for GIT-only SSH access with git shell"
+            ;;
         show )
             count_unlock_achievement "Presenter" "Shows one or more objects (blobs, trees, tags and commits) with git show" "$1"
             ;;
+        show-branch )
+            count_unlock_achievement "Gardner" "Shows the commit ancestry graph with git show-branch" "$1"
+            ;;
+        stash )
+            count_unlock_achievement "Product Manager" "Stash the changes in a dirty working directory away with git stash." "$1"
+            ;;
         svn|p4 )
             count_unlock_achievement "Traveler" "Streamed changes between another rcs with git svn or git p4." "$1"
+            ;;
+        tag )
+            count_unlock_achievement "Gipsy" "Create, list, delete a tag signed with GPG using git tag" "$1"
+            ;;
+        whatchanged )
+            count_unlock_achievement "News Reader" "Show logs with difference each commit introduces with git whatchanged" "$1"
             ;;
     esac
 }
