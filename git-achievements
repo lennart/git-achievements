@@ -95,6 +95,24 @@ function count_command
     #echo "cmd: $1 powerof2: $powerof2 power: $power count: $count"
 }
 
+function hcount_unlock_achievement
+{
+    title="${1}"
+    description="${2}"
+    power="$3"
+    case $power in
+        1|2)
+        pre="Apprentice "
+        ;;
+        3|4|5)
+        pre=""
+        ;;
+        *)
+        pre="Master "
+    esac
+    unlock_achievement "${pre}${title} (Level ${power})" "${description}"
+}
+
 function count_unlock_achievement
 {
     title="${1}"
@@ -102,17 +120,7 @@ function count_unlock_achievement
     cmd="${3}"
     count_command "${cmd}"
     if [ "${powerof2}" = "0" ] ; then
-        case $power in
-            1|2)
-            pre="Apprentice "
-            ;;
-            3|4|5)
-            pre=""
-            ;;
-            *)
-            pre="Master "
-        esac
-        unlock_achievement "${pre}${title} (Level ${power})" "${description}"
+        hcount_unlock_achievement "${title}" "${description}" "$power"
     fi
 }
 
@@ -121,7 +129,7 @@ function check_for_achievements
     # Anyone know of a cleaner way of checking for hooks?
     hooks=`ls .git/hooks/ 2>/dev/null | grep -v sample | wc -l`
     if [ $hooks -ge 1 ] ; then
-        unlock_achievement "Master Carpenter (Level $hooks)" "Custom git hooks are installed which help catch issues before they are shared."
+        hcount_unlock_achievement "Carpenter" "Custom git hooks are installed which help catch issues before they are shared." "$hooks"
     fi
 
     case $2 in
@@ -132,10 +140,7 @@ function check_for_achievements
     esac
 
     case $1 in
-        achievements )
-            git_achivements_command "$@"
-            ;;
-        add )
+       add )
             count_unlock_achievement "Stone Mason" "Added files to the index area for inclusion in the next commit with git add" "$1"
             case $2 in
                 *.gitignore )
@@ -153,7 +158,7 @@ function check_for_achievements
             count_unlock_achievement "Hunter" "Used git bisect to perform a binary search to find which change introduced a bug." "$1"
             ;;
         blame )
-            count_unlock_achievement "Investigator" "Used git blame to annotates each line in a file with information about the revision which last modified the line." "$1"
+            count_unlock_achievement "Investigator" "Used git blame to annotates a file with information about how each line changed." "$1"
             ;;
         cherry-pick )
             unlock_achievement "Cherry Picker" "Used git cherry-pick to add a sha from another branch into the current branch." "$1"
@@ -166,7 +171,7 @@ function check_for_achievements
             esac
             ;;
         commit )
-            count_unlock_achievement "Wisdom" "Made 2^Level commits using git commit." "$1"
+            count_unlock_achievement "Author" "Made 2^Level commits using git commit." "$1"
             case $2 in
                 --amend )
                 count_unlock_achievement "Seamstress" "amended a commit with git commit --amend." "commit --amend"
@@ -178,10 +183,10 @@ function check_for_achievements
             ;;
         config )
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.name" ]] ; then
-                unlock_achievement "Homeowner [name]" "Set global user name using git config."
+                unlock_achievement "Homeowner - name" "Set global user name using git config."
             fi
             if [[ $# -ge 4 && $2 = "--global" && $3 = "user.email" ]] ; then
-                unlock_achievement "Homeowner [address]" "Set global email address using git config."
+                unlock_achievement "Homeowner - address" "Set global email address using git config."
             fi
             ;;
         diff )
@@ -205,7 +210,7 @@ function check_for_achievements
                 unlock_achievement "Dentist" "Extracted patches using git log -p."
                 ;;
                 -S* )
-                unlock_achievement "Librarian" "Looked for differences that introduce or remove an instance of a string with git log -S"
+                unlock_achievement "Librarian" "Looked for change that introduce or remove a string with git log -S"
                 ;;
             esac
             ;;
