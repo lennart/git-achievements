@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
-<item><title>Investigate the log 2 times using git log.</title><item><title>Made 8 commits using git commit.</title><description>Historian (Level 1)</description></item>
+<item><title>Made 2^X commits using git commit.</title><item><title>Investigate the log 2 times using git log.</title><description>Wisdom (Level 4)</description></item>
+<item><title>Made 8 commits using git commit.</title><description>Historian (Level 1)</description></item>
 <item><title>Reviewed patches before committing with git diff --cached.</title><description>Wisdom (Level 3)</description></item>
 <item><title>Using <a href="http://www.kernel.org/pub/software/scm/git/docs/git-add.html">git add</a>.</title><description>Goldsmith (Level 2)</description></item>
 <item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add.</description></item>
