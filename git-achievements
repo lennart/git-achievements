@@ -367,7 +367,7 @@ There are $total Achievements in total and achievements that have X can can be l
     git push origin gh-pages
 }
 
-if [ $1 != "achievements" ] ; then
+if [ ! $1 = "achievements" ] ; then
     git "$@"
 fi
 
