@@ -29,7 +29,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-function execute_achivements_command
+function git_achivements_command
 {
     case $2 in
         -p )
@@ -99,7 +99,7 @@ function check_for_achievements
 {
    case $1 in
         achievements )
-            execute_achivements_command "$@"
+            git_achivements_command "$@"
             ;;
         add )
             count_command "$@"
