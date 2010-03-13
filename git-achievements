@@ -266,7 +266,7 @@ body {
     background-color: black;
     color: white;
     margin: 0 auto;
-    width: 600px;
+    width: 700px;
     text-align: center;
 }
 li {
