@@ -5,10 +5,10 @@ After a git command is executed if a new achievement is unlocked
 git-achievements will display a message on the console for your enjoyment:
 
 ********************************************************************************
-                            Git Achievement Unlocked!
+                            Git Achievement Unlocked!                            
 
-                                Miller (Level 1)
-                      Add only part of a file to the stage.
+                                    Caretaker                                    
+                    Added a .gitignore file to a repository.                    
 ********************************************************************************
 
 
@@ -16,7 +16,8 @@ GitHub Pages
 ------------
 
 A log of all of your achievements is kept locally, but you can also publish
-it to GitHub pages so you can share your achievements.
+it to GitHub pages so you can share your achievements (and there is a rss
+feed so people can track your achievements).
 
 For example here is mine: http://icefox.github.com/git-achievements
 
