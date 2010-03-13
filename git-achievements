@@ -55,7 +55,7 @@ function log_action
 {
     echo "$@" >> "${ACTIONLOGFILE}"
     echo -n "Date: " >> "${ACTIONLOGFILE}"
-    date >> ${ACTIONLOGFILE}
+    date >> "${ACTIONLOGFILE}"
 }
 
 function output_achievement
