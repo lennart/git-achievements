@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Carpenter (Level 6)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Master Carpenter (Level 18)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Weaver</title><description>Investigate old branches by using git reflog</description></item>
@@ -19,5 +20,4 @@
 <item><title>Apprentice Architect (Level 1)</title><description>Created a new repository with git init.</description></item>
 <item><title>Homeowner</title><description>Set global email address using git config.</description></item>
 <item><title>Baptised</title><description>Set global user name using git config.</description></item>
-<item><title>Student</title><description>Accessed the documentation for a command with git [command] --help</description></item>
 </channel></rss>
