@@ -421,8 +421,9 @@ ACHIEVEMENTSLOGFILE="$HOME/.git-achievements.log"
 
 if [ ! "$1" = "achievements" ] ; then
     git "$@"
-    if [ ! $? -eq 0 ] ; then
-        exit $?
+    r=$?
+    if [ ! ${r} -eq 0 ] ; then
+        exit $r
     fi
 else
     git_achivements_command "$@"
