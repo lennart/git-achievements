@@ -429,7 +429,7 @@ else
     git_achivements_command "$@"
 fi
 
-if [ "`echo '--git-dir=.git for-ea' | sed -e 's/=.*//g'`" = "--git-dir" ] ; then
+if [ "`echo '$1' | sed -e 's/=.*//g'`" = "--git-dir" ] ; then
     exit 0
 fi
 
