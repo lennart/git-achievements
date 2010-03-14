@@ -406,6 +406,7 @@ There are $total Achievements in total and achievements that have X can can be l
         return
     fi
 
+    echo "Adding new achievements and publishing to origin."
     git add index.html index.rss
     if [ -z $1 ] ; then
         message="Publishing updated achievement"
