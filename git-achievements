@@ -104,10 +104,10 @@ function hcount_unlock_achievement
     description="${2}"
     power="$3"
     case $power in
-        1|2)
+        1|2|3)
         pre="Apprentice "
         ;;
-        3|4|5)
+        4|5|6)
         pre=""
         ;;
         *)
