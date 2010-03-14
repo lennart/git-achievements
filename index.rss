@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Apprentice Merchant (Level 1)</title><description>Added an external repository with git remote add.</description></item>
 <item><title>Apprentice Seamstress (Level 1)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Apprentice Author (Level 2)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Caretaker</title><description>Added a .gitignore file to a repository.</description></item>
