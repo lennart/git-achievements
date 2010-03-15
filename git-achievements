@@ -309,6 +309,8 @@ echo "
 <title>${user}'s Git Achievements</title>
 <link rel=\"alternate\" type=\"application/rss+xml\" title\"rss feed\" href=\"index.rss\">
 <style type=\"text/css\">
+a:link { color: gray; }
+a:visited { color : gray; }
 body {
     background-color: black;
     color: white;
