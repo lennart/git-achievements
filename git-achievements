@@ -308,33 +308,8 @@ echo "
 <head>
 <title>${user}'s Git Achievements</title>
 <link rel=\"alternate\" type=\"application/rss+xml\" title\"rss feed\" href=\"index.rss\">
-<style type=\"text/css\">
-body {
-    background-color: black;
-    color: white;
-    margin: 0 auto;
-    width: 700px;
-    text-align: center;
-}
-li {
-    background-color: #1E2024;
-    border: 1px solid gray;
-    padding: .25em;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin-bottom: .5em;
-}
-div.title {
-    font-weight: bold;
-}
-ul {
-    text-align: left;
-    list-style-type:none;
-}
-#locked {
-    visibility: hidden;
-}
-</style>
+<link rel=\"stylesheet\" type=\"text/css\" href=\"stylesheets/achievements.css\"/>
+
 </head>
 <body>
 " > index.html
