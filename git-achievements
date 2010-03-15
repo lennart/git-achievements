@@ -206,6 +206,9 @@ function check_for_achievements
         fetch )
             count_unlock_achievement "Collector" "Fetches named heads or tags from another repository with git fetch" "$1"
             ;;
+        filter-branch )
+            count_unlock_achievement "Tree Trimmer" "Rewrite branches with git filter-branch" "$1"
+            ;;
         format-patch )
             count_unlock_achievement "Archivist" "Prepare each commit with its patch in one file per commit with git format-patch" "$1"
             ;;
