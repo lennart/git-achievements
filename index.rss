@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Stone Mason (Level 4)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
 <item><title>Apprentice Seamstress (Level 2)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Apprentice Presenter (Level 2)</title><description>Shows one or more objects (blobs, trees, tags and commits) with git show</description></item>
 <item><title>Apprentice Socialite (Level 3)</title><description>pushed a branch to a remote repository using git push</description></item>
@@ -19,5 +20,4 @@
 <item><title>Librarian</title><description>Looked for change that introduce or remove a string with git log -S</description></item>
 <item><title>Apprentice Historian (Level 1)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Apprentice Merchant (Level 1)</title><description>Added an external repository with git remote add.</description></item>
-<item><title>Apprentice Seamstress (Level 1)</title><description>amended a commit with git commit --amend.</description></item>
 </channel></rss>
