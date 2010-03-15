@@ -163,6 +163,9 @@ function check_for_achievements
         blame )
             count_unlock_achievement "Investigator" "Used git blame to annotates a file with information about how each line changed." "$1"
             ;;
+        bundle )
+            count_unlock_achievement "Delivery Boy" "Move objects and refs by archive with git bundle." "$1"
+            ;;
         cherry-pick )
             unlock_achievement "Cherry Picker" "Used git cherry-pick to add a sha from another branch into the current branch." "$1"
             ;;
