@@ -135,6 +135,12 @@ function check_for_achievements
         hcount_unlock_achievement "Carpenter" "Custom git hooks are installed which help catch issues before they are shared." "$hooks"
     fi
 
+    # Custom command
+    which "git-$1" > /dev/null
+    if [[ $? == 0 && $1 != "achievements" ]] ; then
+        unlock_achievement "Inventor ($1)" "Used a command that isn't part of the build in Git command"
+    fi
+
     case $2 in
         --help )
             unlock_achievement "Student" "Accessed the documentation for a command with git [command] --help"
