@@ -1,0 +1,30 @@
+body {
+  background-color: #ebebeb;
+  color: #0f1b24;
+  margin: 0;
+  width: 700px;
+  font-family: Georgia;
+  position: relative;
+  left: 50%;
+  margin-left: -350px;
+  text-align: center; }
+
+li {
+  background-color: #dcdcdc;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #28343d;
+  padding: .25em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin-bottom: .5em; }
+
+div.title {
+  font-weight: bold; }
+
+ul {
+  text-align: left;
+  list-style-type: none; }
+
+#locked {
+  visibility: hidden; }
