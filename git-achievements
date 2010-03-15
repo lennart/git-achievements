@@ -289,7 +289,7 @@ function check_for_achievements
 
 function link_to_git_docs
 {
-    sed -e 's_git \([a-z0-9-]*\)_<a href="http://www.kernel.org/pub/software/scm/git/docs/git-\1.html">git-\1</a>_g' -
+    sed -e 's_git \([a-z0-9-]*\)_<a href="http://www.kernel.org/pub/software/scm/git/docs/git-\1.html">git-\1</a>_g' - | sed -e 's/\/git-hooks/\/githooks/g'
 }
 
 function clean_logged_achievements() {
