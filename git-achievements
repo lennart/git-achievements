@@ -187,6 +187,9 @@ function check_for_achievements
             ;;
         commit )
             count_unlock_achievement "Author" "Made 2^Level commits using git commit." "$1"
+            if [ "`git log --oneline | wc -l`" -eq "1" ] ; then
+                unlock_achievement "Let there be light" "Commit without a parent." "$1"
+            fi
             case $2 in
                 --amend )
                 count_unlock_achievement "Seamstress" "amended a commit with git commit --amend." "commit --amend"
