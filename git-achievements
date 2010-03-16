@@ -296,6 +296,9 @@ function check_for_achievements
         whatchanged )
             count_unlock_achievement "News Reader" "Show logs with difference each commit introduces with git whatchanged" "$1"
             ;;
+        hash-object|update-index|commit-tree|update-ref )
+            count_unlock_achievement "Plumber" "Use the internal plumbing commands of git." "$1"
+            ;;
     esac
 }
 
