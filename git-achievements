@@ -247,6 +247,9 @@ function check_for_achievements
                 ;;
             esac
             ;;
+        merge )
+            count_unlock_achievement "Banker" "Join two or more development histories together with git merge." "$1"
+            ;;
         push )
             count_unlock_achievement "Socialite" "pushed a branch to a remote repository using git push" "$1"
             case $2 in
