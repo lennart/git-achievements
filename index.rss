@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
+<item><title>Inventor (timecard)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Author (Level 5)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Apprentice Goldsmith (Level 3)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
 <item><title>Inventor (achievements)</title><description>Used a command that isn't part of the built in Git tools</description></item>
@@ -19,5 +20,4 @@
 <item><title>Carpenter (Level 6)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Master Carpenter (Level 18)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
-<item><title>Weaver</title><description>Investigate old branches by using git reflog</description></item>
 </channel></rss>
