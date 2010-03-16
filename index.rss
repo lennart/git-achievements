@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Benjamin C Meyer's Git Achievements</title>
-<item><title>Inventor (achievements)</title><description>Used a command that isn't part of the build in Git tools</description></item>
+<item><title>Author (Level 5)</title><description>Made 2^Level commits using git commit.</description></item>
+<item><title>Apprentice Goldsmith (Level 3)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
+<item><title>Inventor (achievements)</title><description>Used a command that isn't part of the built in Git tools</description></item>
 <item><title>Apprentice Butcher (Level 1)</title><description>Performed an interactive rebase using git rebase -i.</description></item>
 <item><title>Apprentice Chimney Sweeper (Level 2)</title><description>Used git gc to run a number of housekeeping tasks on the current repository.</description></item>
 <item><title>Apprentice Archivist (Level 1)</title><description>Prepare each commit with its patch in one file per commit with git format-patch</description></item>
@@ -18,6 +20,4 @@
 <item><title>Master Carpenter (Level 18)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Apprentice Carpenter (Level 1)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 <item><title>Weaver</title><description>Investigate old branches by using git reflog</description></item>
-<item><title>Apprentice Investigator (Level 1)</title><description>Used git blame to annotates a file with information about how each line changed.</description></item>
-<item><title>Apprentice Chimney Sweeper (Level 1)</title><description>Used git gc to run a number of housekeeping tasks on the current repository.</description></item>
 </channel></rss>
