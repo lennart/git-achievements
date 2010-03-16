@@ -249,6 +249,11 @@ function check_for_achievements
             ;;
         push )
             count_unlock_achievement "Socialite" "pushed a branch to a remote repository using git push" "$1"
+            case $2 in
+                -f )
+                count_unlock_achievement "Thug" "Forced pushed a branch with git push -f" "push -f"
+                ;;
+            esac
             ;;
         rebase )
             case $2 in
