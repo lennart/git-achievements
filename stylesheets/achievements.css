@@ -1,30 +1,94 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small,
+strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog,
+figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none; }
+
+:focus {
+  outline: 0; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+h2 {
+  font-size: 1.3em;
+  line-height: 1.5em; }
+
+a {
+  color: #623500; }
+
 body {
   background-color: #ebebeb;
-  color: #0f1b24;
-  margin: 0;
+  color: #086fa1;
   width: 700px;
   font-family: Georgia;
+  font-size: 15pt;
   position: relative;
   left: 50%;
   margin-left: -350px;
+  margin-top: 1em;
   text-align: center; }
 
 li {
-  background-color: #dcdcdc;
+  background-color: #ffb661;
   border-width: 1px;
   border-style: solid;
-  border-color: #28343d;
-  padding: .25em;
+  border-color: #2188ba;
+  padding: .35em;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   margin-bottom: .5em; }
 
 div.title {
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 1.1em; }
 
 ul {
   text-align: left;
+  margin: 0.5em;
   list-style-type: none; }
+
+pre {
+  margin: 0.5em;
+  background-color: #268dbf;
+  color: #ffc06b;
+  font-family: "Menlo" courier;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+  padding-bottom: 2.5em; }
 
 #locked {
   visibility: hidden; }

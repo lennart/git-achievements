@@ -1,33 +1,70 @@
+@import colors
+@import snippets/html5-css-reset
 !background = #ebebeb
-!base = #0f1b24
+!base = !complement_1 
+!low_contrast = !primary_3
+!highlight = !complement_1
+!high_contrast = !primary_5
+
+h2
+  :font-size 1.3em
+  :line-height 1.5em
+
+a
+  :color = !low_contrast
+
+=round( !radius = 5px )
+  :-moz-border-radius = !radius
+  :-webkit-border-radius = !radius
+
 body 
   :background-color = !background
   :color = !base
-  :margin 0
   :width 700px
-  :font-family Georgia
+  :font
+    :family Georgia
+    :size 15pt
   :position relative
   :left 50%
-  :margin-left -350px
+  :margin
+    :left -350px
+    :top 1em
+
   :text-align center
 li 
-  :background-color = !background - 15
+  :background-color = !high_contrast
   :border 
     :width 1px 
     :style solid 
     :color = !base + 25
-  :padding .25em
-  :-moz-border-radius 5px
-  :-webkit-border-radius 5px
+  :padding .35em
+  +round(5px)
   :margin-bottom .5em
 
 div.title
   :font
     :weight bold
+  :line-height 1.1em
 
 ul 
   :text-align left
+  :margin 0.5em
   :list-style-type none 
+
+pre
+  :margin 0.5em
+  :background
+    :color = !highlight + 30
+  :color = !high_contrast + 10
+  :font
+    :family "Menlo" courier
+
+  +round(7px)
+  :padding
+    :left 2em
+    :right 2em
+    :top 1em
+    :bottom 2.5em
 
 #locked 
   :visibility hidden
