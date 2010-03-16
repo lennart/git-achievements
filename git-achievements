@@ -387,7 +387,7 @@ function showLocked() {
 </script>
 <a id=\"showlocked\" href=\"javascript:showLocked()\" >Show locked Achievements</a>
 <div id=\"locked\">
-There are $total Achievements in total and achievements that have X can can be leveled depending on their usage (1, 2, 4, 16, 32, etc)
+There are $total Achievements. Some achievements can be leveled up depending on the number of times it is used (Used 2 times = level 1, 4 = level 2, 8 = level 3, 16 = level 4, 32 = level 5, etc)
 <ul>" >> index.html
 
     cat index.html | sed -e 's/Apprentice //g' -e 's/Master //g'> temp.html
