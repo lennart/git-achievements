@@ -422,7 +422,7 @@ There are $total Achievements. Some achievements can be leveled up depending on 
 
     echo "Adding new achievements and publishing to origin."
     git add index.html index.rss
-    if [ -z $1 ] ; then
+    if [ -z "${1}" ] ; then
         message="Publishing updated achievement"
     else
         message="New achievement $1"
