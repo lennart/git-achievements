@@ -80,7 +80,7 @@ function unlock_achievement()
     output_achievement "$@" >> "${ACHIEVEMENTSLOGFILE}"
 
     if [ "`git config --global achievement.upload`" = "true" ] ; then
-        publish_achievements $@
+        publish_achievements "$@"
     fi
 }
 
