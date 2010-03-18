@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>lennart's Git Achievements</title>
+<item><title>Apprentice Collector (Level 2)</title><description>Fetches named heads or tags from another repository with git fetch</description></item>
 <item><title>Apprentice Architect (Level 1)</title><description>Created a new repository with git init.</description></item>
 <item><title>Apprentice Socialite (Level 2)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Apprentice Socialite (Level 1)</title><description>pushed a branch to a remote repository using git push</description></item>
