@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>lennart's Git Achievements</title>
+<item><title>Historian (Level 5)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Apprentice Author (Level 2)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Apprentice Merchant (Level 3)</title><description>Added an external repository with git remote add.</description></item>
 <item><title>Apprentice Architect (Level 3)</title><description>Created a new repository with git init.</description></item>
@@ -19,5 +20,4 @@
 <item><title>Apprentice Historian (Level 3)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Socialite (Level 4)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Apprentice Historian (Level 2)</title><description>Investigate the commit log using git log.</description></item>
-<item><title>Gipsy (Level 5)</title><description>Create, list, delete a tag signed with GPG using git tag</description></item>
 </channel></rss>
