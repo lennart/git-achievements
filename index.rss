@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>lennart's Git Achievements</title>
+<item><title>Apprentice Seamstress (Level 2)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Let there be light</title><description>Commit without a parent.</description></item>
 <item><title>Product Manager (Level 4)</title><description>Stash the changes in a dirty working directory away with git stash.</description></item>
 <item><title>Master Gipsy (Level 7)</title><description>Create, list, delete a tag signed with GPG using git tag</description></item>
@@ -19,5 +20,4 @@
 <item><title>Apprentice Seamstress (Level 1)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Apprentice Author (Level 1)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Historian (Level 4)</title><description>Investigate the commit log using git log.</description></item>
-<item><title>Collector (Level 4)</title><description>Fetches named heads or tags from another repository with git fetch</description></item>
 </channel></rss>
