@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
-<title>lennart's Git Achievements</title>
-<item><title>Apprentice Seamstress (Level 2)</title><description>amended a commit with git commit --amend.</description></item>
-<item><title>Let there be light</title><description>Commit without a parent.</description></item>
-<item><title>Product Manager (Level 4)</title><description>Stash the changes in a dirty working directory away with git stash.</description></item>
-<item><title>Master Gipsy (Level 7)</title><description>Create, list, delete a tag signed with GPG using git tag</description></item>
-<item><title>Master Socialite (Level 7)</title><description>pushed a branch to a remote repository using git push</description></item>
-<item><title>Apprentice Author (Level 3)</title><description>Made 2^Level commits using git commit.</description></item>
-<item><title>Librarian</title><description>Looked for change that introduce or remove a string with git log -S</description></item>
-<item><title>Historian (Level 5)</title><description>Investigate the commit log using git log.</description></item>
-<item><title>Apprentice Author (Level 2)</title><description>Made 2^Level commits using git commit.</description></item>
-<item><title>Apprentice Merchant (Level 3)</title><description>Added an external repository with git remote add.</description></item>
-<item><title>Apprentice Architect (Level 3)</title><description>Created a new repository with git init.</description></item>
-<item><title>Gipsy (Level 6)</title><description>Create, list, delete a tag signed with GPG using git tag</description></item>
-<item><title>Socialite (Level 6)</title><description>pushed a branch to a remote repository using git push</description></item>
-<item><title>Apprentice Merchant (Level 2)</title><description>Added an external repository with git remote add.</description></item>
-<item><title>Stone Mason (Level 6)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
-<item><title>Dentist</title><description>Extracted patches using git log -p.</description></item>
-<item><title>Socialite (Level 5)</title><description>pushed a branch to a remote repository using git push</description></item>
-<item><title>Apprentice Seamstress (Level 1)</title><description>amended a commit with git commit --amend.</description></item>
-<item><title>Apprentice Author (Level 1)</title><description>Made 2^Level commits using git commit.</description></item>
-<item><title>Historian (Level 4)</title><description>Investigate the commit log using git log.</description></item>
+<title>Karel Kremel's Git Achievements</title>
+<item><title>Apprentice Stone Mason (Level 2)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Apprentice Socialite (Level 1)</title><description>pushed a branch to a remote repository using git push</description></item>
+<item><title>Apprentice Stone Mason (Level 1)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
+<item><title>Student</title><description>Accessed the documentation for a command with git [command] --help</description></item>
 </channel></rss>
