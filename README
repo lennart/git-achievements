@@ -5,10 +5,10 @@ After a git command is executed if a new achievement is unlocked
 git-achievements will display a message on the console for your enjoyment:
 
 ********************************************************************************
-                            Git Achievement Unlocked!                            
+                            Git Achievement Unlocked!
 
-                                    Caretaker                                    
-                    Added a .gitignore file to a repository.                    
+                                    Caretaker
+                    Added a .gitignore file to a repository.
 ********************************************************************************
 
 
@@ -19,7 +19,7 @@ A log of all of your achievements is kept locally, but you can also publish
 it to GitHub pages so you can share your achievements (and there is a rss
 feed so people can track your achievements).
 
-For example here is mine: http://icefox.github.com/git-achievements
+For example here is mine: https://alembiq.github.io/git-achievements/
 
 To push your achievements to GitHub first fork the project on GitHub,
 clone *your* repository and set the following config to true:
