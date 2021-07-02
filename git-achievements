@@ -368,7 +368,7 @@ echo "
     # Locked Achievements
     echo "<script type=\"text/javascript\">
 function showLocked() {
-    document.getElementById('locked').style.visibility = 'visible';
+    document.getElementById('locked').style.display= 'block';
     document.getElementById('showlocked').style.visibility = 'hidden';
 }
 </script>

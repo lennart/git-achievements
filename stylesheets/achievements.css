@@ -91,4 +91,4 @@ pre {
   padding-bottom: 2.5em; }
 
 #locked {
-  visibility: hidden; }
+  display: none; }
