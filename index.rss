@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Karel Kremel's Git Achievements</title>
+<item><title>Historian (Level 5)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Author (Level 5)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Inventor (add)</title><description>Used a command that isn't part of the built in Git command</description></item>
 <item><title>Student</title><description>Accessed the documentation for a command with git [command] --help</description></item>
@@ -19,5 +20,4 @@
 <item><title>Apprentice Socialite (Level 3)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Apprentice Author (Level 3)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Apprentice Stone Mason (Level 3)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
-<item><title>Apprentice Locksmith (Level 2)</title><description>Add Signed-off-by line at the end of the commit log message using git commit -s.</description></item>
 </channel></rss>
