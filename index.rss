@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Karel Kremel's Git Achievements</title>
+<item><title>Thug (Level 4)</title><description>Forced pushed a branch with git push -f</description></item>
 <item><title>Collector (Level 5)</title><description>Fetches named heads or tags from another repository with git fetch</description></item>
 <item><title>Apprentice Thug (Level 3)</title><description>Forced pushed a branch with git push -f</description></item>
 <item><title>Master Socialite (Level 7)</title><description>pushed a branch to a remote repository using git push</description></item>
@@ -19,5 +20,4 @@
 <item><title>Student</title><description>Accessed the documentation for a command with git [command] --help</description></item>
 <item><title>Socialite (Level 5)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Caretaker</title><description>Added a .gitignore file to a repository.</description></item>
-<item><title>Stone Mason (Level 5)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
 </channel></rss>
