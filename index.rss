@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Karel Kremel's Git Achievements</title>
+<item><title>Apprentice Seamstress (Level 1)</title><description>amended a commit with git commit --amend.</description></item>
 <item><title>Apprentice Product Manager (Level 3)</title><description>Stash the changes in a dirty working directory away with git stash.</description></item>
 <item><title>Collector (Level 6)</title><description>Fetches named heads or tags from another repository with git fetch</description></item>
 <item><title>Apprentice Product Manager (Level 2)</title><description>Stash the changes in a dirty working directory away with git stash.</description></item>
@@ -19,5 +20,4 @@
 <item><title>Author (Level 6)</title><description>Made 2^Level commits using git commit.</description></item>
 <item><title>Socialite (Level 6)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Apprentice Presenter (Level 2)</title><description>Shows one or more objects (blobs, trees, tags and commits) with git show</description></item>
-<item><title>Apprentice Thug (Level 1)</title><description>Forced pushed a branch with git push -f</description></item>
 </channel></rss>
